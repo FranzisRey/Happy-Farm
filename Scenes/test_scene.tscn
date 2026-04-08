@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b1yb2hath2iy4"]
 
 [ext_resource type="PackedScene" uid="uid://be8qbmt0fe144" path="res://Scenes/player.tscn" id="1_3dogw"]
+[ext_resource type="Texture2D" uid="uid://dtyify41teq55" path="res://Sprites/Main Char 16x32.png" id="2_r5l72"]
 
 [node name="Test Scene" type="Node2D" unique_id=2002135892]
 
@@ -10,3 +11,7 @@ position = Vector2(288, 222)
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=532192785]
 position = Vector2(33, 77)
 polygon = PackedVector2Array(188, 238, 188, 267, 230, 268, 222, 233)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1932717117]
+position = Vector2(422, 237)
+texture = ExtResource("2_r5l72")

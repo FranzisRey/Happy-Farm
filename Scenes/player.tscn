@@ -52,3 +52,6 @@ frame_progress = 0.103581235
 
 [node name="Camera" type="Camera2D" parent="." unique_id=1724820537]
 zoom = Vector2(4, 4)
+process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0

@@ -7,8 +7,6 @@ func _ready():
 	$Camera.zoom = Vector2i(1,1)
 
 func _physics_process(delta):
-
-	#$Camera.zoom = GameManager.windowToCameraRatio
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var xDir = Input.get_axis("Left", "Right")
@@ -21,5 +19,5 @@ func _physics_process(delta):
 		velocity.y = yDir * SPEED * delta
 	else:
 		velocity.y = 0
-
+	
 	move_and_slide()
