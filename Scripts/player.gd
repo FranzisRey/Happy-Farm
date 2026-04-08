@@ -3,8 +3,8 @@ extends CharacterBody2D
 
 const SPEED = 3000.0
 
-
-
+func _ready():
+	$Camera.zoom = Vector2i(1,1)
 
 func _physics_process(delta):
 

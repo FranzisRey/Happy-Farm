@@ -51,3 +51,4 @@ animation = &"front"
 frame_progress = 0.103581235
 
 [node name="Camera" type="Camera2D" parent="." unique_id=1724820537]
+zoom = Vector2(4, 4)
