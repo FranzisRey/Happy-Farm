@@ -10,7 +10,7 @@ var animationFrame = 0
 
 
 func _ready():
-	$Camera.zoom = Vector2i(1,1)
+	pass
 
 func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.

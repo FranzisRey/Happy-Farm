@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dbdnk3vm17w4r"]
+
+[ext_resource type="Script" uid="uid://dgnn7h5tksgme" path="res://Scripts/mango.gd" id="1_abogf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0aysh"]
+radius = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_abogf"]
+radius = 8.0
+
+[node name="Mango" type="Node2D" unique_id=960435102]
+script = ExtResource("1_abogf")
+
+[node name="PinJoint" type="PinJoint2D" parent="." unique_id=1824544209]
+node_a = NodePath("Pin")
+node_b = NodePath("Mango")
+
+[node name="Pin" type="StaticBody2D" parent="PinJoint" unique_id=1127844060]
+disable_mode = 1
+
+[node name="CollisionShape" type="CollisionShape2D" parent="PinJoint/Pin" unique_id=299448316]
+shape = SubResource("CircleShape2D_0aysh")
+disabled = true
+
+[node name="Mango" type="RigidBody2D" parent="PinJoint" unique_id=339123108]
+
+[node name="CollisionShape" type="CollisionShape2D" parent="PinJoint/Mango" unique_id=789311204]
+shape = SubResource("CircleShape2D_abogf")
+
+[node name="Polygon" type="Polygon2D" parent="PinJoint/Mango" unique_id=697451608]
+color = Color(1, 1, 0, 1)
+polygon = PackedVector2Array(0, -8, -8, 0, 0, 8, 8, 0)

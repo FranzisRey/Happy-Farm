@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://ds1jte8s42qim"]
+
+[ext_resource type="Script" uid="uid://dimr1moe6w0gf" path="res://Scripts/mango_tree_scene.gd" id="1_7tgll"]
+[ext_resource type="PackedScene" uid="uid://dbdnk3vm17w4r" path="res://Scenes/mango.tscn" id="1_740e2"]
+[ext_resource type="Script" uid="uid://4gqx6pijjw2p" path="res://Scripts/cameraZoomResetter.gd" id="1_movr1"]
+
+[node name="Mango Tree Scene" type="Node2D" unique_id=606201353]
+script = ExtResource("1_7tgll")
+
+[node name="Tree" type="Node2D" parent="." unique_id=795671917]
+
+[node name="Polygon2D" type="Polygon2D" parent="Tree" unique_id=611311835]
+position = Vector2(-4, -49)
+scale = Vector2(1.640625, 1.6818181)
+polygon = PackedVector2Array(-8, 32, -8, 48.386795, -8, 80, 8, 80, 8, 32, 61.86667, 31.83784, 0, -8, -61.86667, 33.621624)
+
+[node name="Mango" parent="Tree" unique_id=960435102 instance=ExtResource("1_740e2")]
+position = Vector2(-27, -9)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=337865320]
+zoom = Vector2(4, 4)
+script = ExtResource("1_movr1")
+
+[node name="Mango picker" type="Node2D" parent="." unique_id=992723482]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Mango picker" unique_id=215326516]
+position = Vector2(0, -1)
+disable_mode = 1
+freeze = true
+freeze_mode = 1
+
+[node name="CollisionPolygon" type="CollisionPolygon2D" parent="Mango picker/RigidBody2D" unique_id=1241452164]
+polygon = PackedVector2Array(-10, -10, 0, 0, 10, -10, 0, 1)
