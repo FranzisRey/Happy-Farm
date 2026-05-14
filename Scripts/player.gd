@@ -56,5 +56,7 @@ func _physics_process(delta):
 		armSprite.stop()
 		hatSprite.stop()
 		animationFrame = 0
-	
+	#$Camera.global_position.x = roundi($Camera.global_position.x)
+	#$Camera.global_position.y = roundi($Camera.global_position.y)
 	move_and_slide()
+	

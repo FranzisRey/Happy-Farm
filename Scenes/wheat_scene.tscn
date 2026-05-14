@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cpln4nhvoqwpp"]
+
+[ext_resource type="Script" uid="uid://4gqx6pijjw2p" path="res://Scripts/cameraZoomResetter.gd" id="1_57cme"]
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="2_7x366"]
+[ext_resource type="Shader" uid="uid://0dobemnptju3" path="res://Shaders/wheat_cut_shader.gdshader" id="2_exxwf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8y4eo"]
+shader = ExtResource("2_exxwf")
+shader_parameter/slope = 0.0
+shader_parameter/offset = -3.2
+
+[node name="Wheat Scene" type="Node2D" unique_id=373161630]
+
+[node name="Camera" type="Camera2D" parent="." unique_id=815973580]
+zoom = Vector2(4, 4)
+script = ExtResource("1_57cme")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=148904975]
+material = SubResource("ShaderMaterial_8y4eo")
+position = Vector2(16, 5)
+texture = ExtResource("2_7x366")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=2040694741]

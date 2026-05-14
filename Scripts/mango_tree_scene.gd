@@ -3,6 +3,8 @@ extends Node2D
 @onready var mango_picker = $"Mango picker"
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	await get_tree().create_timer(0).timeout
+	get_viewport().warp_mouse(get_viewport().size/8)
 	pass # Replace with function body.
 
 
