@@ -3,11 +3,12 @@
 [ext_resource type="Script" uid="uid://4gqx6pijjw2p" path="res://Scripts/cameraZoomResetter.gd" id="1_57cme"]
 [ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="2_7x366"]
 [ext_resource type="Shader" uid="uid://0dobemnptju3" path="res://Shaders/wheat_cut_shader.gdshader" id="2_exxwf"]
+[ext_resource type="Script" uid="uid://bgfig2w71hbar" path="res://Scenes/mouse_manager.gd" id="4_8y4eo"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8y4eo"]
 shader = ExtResource("2_exxwf")
-shader_parameter/slope = 0.0
-shader_parameter/offset = -3.2
+shader_parameter/slope = 1.0
+shader_parameter/offset = 0.0
 
 [node name="Wheat Scene" type="Node2D" unique_id=373161630]
 
@@ -17,7 +18,12 @@ script = ExtResource("1_57cme")
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=148904975]
 material = SubResource("ShaderMaterial_8y4eo")
-position = Vector2(16, 5)
+position = Vector2(-68, -2)
 texture = ExtResource("2_7x366")
 
-[node name="Node2D" type="Node2D" parent="." unique_id=2040694741]
+[node name="Mouse Manager" type="Node2D" parent="." unique_id=2040694741]
+script = ExtResource("4_8y4eo")
+
+[node name="Line2D" type="Line2D" parent="Mouse Manager" unique_id=1398975701]
+points = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+width = 2.0

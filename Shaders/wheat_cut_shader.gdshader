@@ -4,14 +4,22 @@ varying vec2 vertex_local;
 
 uniform float slope = 0;
 uniform float offset = 0;
-void vertex() {
+
+float random(float seed)
+{
+    return fract(sin(dot(seed, 12.9898)) * 43758.5453);
+}
+
+void vertex()
+{
 	vertex_local = VERTEX;
 	// Called for every vertex the material is visible on.
 }
 
-void fragment() {
+void fragment()
+{
 	vec2 texture_size = 1.0/TEXTURE_PIXEL_SIZE;
-	if (UV.y > -slope*(UV.x)+(-offset*TEXTURE_PIXEL_SIZE.x)+1.0)
+	if (UV.y+clamp(sin(UV.x*1000.0),-.01,0) < (-slope*(UV.x)+(-offset*TEXTURE_PIXEL_SIZE.x)+1.0))
 	{
 		COLOR.a = 0.0;
 	}
