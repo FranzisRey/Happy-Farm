@@ -5,7 +5,6 @@ var GotCut = false
 @export var mouse_manager: Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	material.set("shader_parameter/offset", texture.get_size().y/4)
 	pass # Replace with function body.
 
 
@@ -19,7 +18,7 @@ func _process(delta):
 			var slope = -tan(CutPoints[0].angle_to_point(CutPoints[1]))
 			var offset = ((minV.y+maxV.y)/2)
 			print(offset)
-			material.set("shader_parameter/offset", -offset+global_position.x+texture.get_size().x/2)
+			material.set("shader_parameter/offset", -offset+global_position.y+texture.get_size().x/2)
 			material.set("shader_parameter/slope", slope)
 			GotCut = true
 	elif is_nan(CutPoints[1][0]):

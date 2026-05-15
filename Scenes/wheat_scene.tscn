@@ -8,8 +8,8 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8y4eo"]
 shader = ExtResource("2_exxwf")
-shader_parameter/slope = 1.09
-shader_parameter/offset = 5.26
+shader_parameter/slope = 0.0
+shader_parameter/offset = 138.34
 
 [node name="Wheat Scene" type="Node2D" unique_id=373161630]
 
