@@ -19,7 +19,7 @@ void vertex()
 void fragment()
 {
 	vec2 texture_size = 1.0/TEXTURE_PIXEL_SIZE;
-	if (UV.y+clamp(sin(UV.x*1000.0),-.01,0) < (-slope*(UV.x)+(-offset*TEXTURE_PIXEL_SIZE.x)+1.0))
+	if (UV.y+clamp(sin(UV.x*1000.0),-.01,0) < (-slope*(UV.x-.5)+(-offset*TEXTURE_PIXEL_SIZE.x+1.0)))
 	{
 		COLOR.a = 0.0;
 	}

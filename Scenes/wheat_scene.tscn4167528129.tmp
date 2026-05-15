@@ -8,24 +8,20 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8y4eo"]
 shader = ExtResource("2_exxwf")
-shader_parameter/slope = 1.09
-shader_parameter/offset = 5.26
+shader_parameter/slope = 0.0
+shader_parameter/offset = 19.39
 
 [node name="Wheat Scene" type="Node2D" unique_id=373161630]
-
-[node name="CutTimer" type="Timer" parent="." unique_id=1464534969]
-wait_time = 0.2
-one_shot = true
 
 [node name="Camera" type="Camera2D" parent="." unique_id=815973580]
 zoom = Vector2(4, 4)
 script = ExtResource("1_57cme")
 
-[node name="Icon" type="Sprite2D" parent="." unique_id=148904975 node_paths=PackedStringArray("mouse_manager")]
+[node name="Icon" type="Sprite2D" parent="." unique_id=148904975]
 material = SubResource("ShaderMaterial_8y4eo")
+position = Vector2(-68, -2)
 texture = ExtResource("2_7x366")
 script = ExtResource("4_3v8l8")
-mouse_manager = NodePath("../Mouse Manager")
 
 [node name="Mouse Manager" type="Node2D" parent="." unique_id=2040694741]
 script = ExtResource("4_8y4eo")
