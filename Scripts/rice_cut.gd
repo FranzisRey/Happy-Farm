@@ -16,9 +16,9 @@ func _process(delta):
 		var maxV = CutPoints[0].max(CutPoints[1])
 		if minV.x <= global_position.x-(texture.get_size().x/2) && global_position.x+(texture.get_size().x/2) <= maxV.x:
 			var slope = -tan(CutPoints[0].angle_to_point(CutPoints[1]))
-			var offset = ((minV.y+maxV.y)/2)
+			var offset = ((minV+maxV)/2)
 			print(offset)
-			material.set("shader_parameter/offset", -offset+global_position.y+texture.get_size().x/2)
+			material.set("shader_parameter/offset", -offset.y+global_position.y-slope*(offset.x-global_position.x)+(texture.get_height()/2))
 			material.set("shader_parameter/slope", slope)
 			GotCut = true
 	elif is_nan(CutPoints[1][0]):
