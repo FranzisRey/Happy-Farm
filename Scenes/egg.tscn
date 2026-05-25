@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://i4dqiwu3hdmh"]
+
+[ext_resource type="Script" uid="uid://dj18i1yca62xg" path="res://Scripts/egg_cracking.gd" id="1_jdgtd"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vgq1g"]
+radius = 4.0
+height = 12.0
+
+[node name="Egg" type="RigidBody2D" unique_id=1047499390 groups=["Egg"]]
+collision_layer = 16
+collision_mask = 114
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_jdgtd")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=396799693]
+shape = SubResource("CapsuleShape2D_vgq1g")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1655578509]
+polygon = PackedVector2Array(0, -6, -4, 0, -4, 2, -2, 5, 0, 6, 2, 5, 4, 2, 4, 0)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=304669331]
+emitting = false
+amount = 16
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+direction = Vector2(0, 0)
+spread = 180.0
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

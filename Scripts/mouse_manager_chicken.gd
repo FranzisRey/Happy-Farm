@@ -12,9 +12,9 @@ func _process(delta):
 	
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
 		for body in get_overlapping_bodies():
-			var direction: Vector2 = global_position - body.global_position
-			var distance: float = direction.length()
-			direction = direction.normalized()
-			body.linear_velocity =  distance * direction * 1000 * delta
-			print(body)
+			if body.is_in_group("Egg"):
+				var direction: Vector2 = global_position - body.global_position
+				var distance: float = direction.length()
+				direction = direction.normalized()
+				body.linear_velocity =  distance * direction * 1000 * delta
 	pass

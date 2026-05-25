@@ -1,32 +1,17 @@
 [gd_scene format=3 uid="uid://dqc7cco438bky"]
 
+[ext_resource type="Script" uid="uid://bi1ngic3qoa2b" path="res://Scripts/chicken_manager.gd" id="1_7h841"]
 [ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="1_245eq"]
 [ext_resource type="Script" uid="uid://c7rsfngpdv670" path="res://Scripts/chicken_pickup.gd" id="1_jy3mo"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jy3mo"]
-radius = 6.0
-height = 12.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jy3mo"]
 size = Vector2(32, 32)
 
 [node name="Chicken_pen" type="Node2D" unique_id=1909793426]
-
-[node name="Egg" type="RigidBody2D" parent="." unique_id=418625421]
-position = Vector2(-1, -1)
-collision_layer = 16
-collision_mask = 114
-linear_damp = 1.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Egg" unique_id=1082344545]
-shape = SubResource("CapsuleShape2D_jy3mo")
-
-[node name="Polygon2D" type="Polygon2D" parent="Egg" unique_id=1986565444]
-scale = Vector2(2, 2)
-polygon = PackedVector2Array(0, -3, -2, 0, 0, 3, 2, 0)
+script = ExtResource("1_7h841")
 
 [node name="Chicken" type="RigidBody2D" parent="." unique_id=1503969019]
-position = Vector2(8, -8)
+position = Vector2(0, -16)
 collision_layer = 8
 input_pickable = true
 mass = 0.001
@@ -41,29 +26,37 @@ shape = SubResource("RectangleShape2D_jy3mo")
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_245eq")
 
+[node name="ChickenEggCol" type="AnimatableBody2D" parent="Chicken" unique_id=1409463894]
+collision_layer = 16
+collision_mask = 16
+sync_to_physics = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Chicken/ChickenEggCol" unique_id=1956500242]
+polygon = PackedVector2Array(-16, -16, -16, 16, -15, 5, 15, 5, 16, 16, 16, -16)
+
 [node name="GrooveJoint2D" type="GrooveJoint2D" parent="." unique_id=338959212]
-position = Vector2(8, -8)
+position = Vector2(0, -16)
 rotation = 3.1415927
 node_a = NodePath("../Chicken")
 node_b = NodePath("../Pin")
-length = 30.0
-initial_offset = 30.0
+length = 32.0
+initial_offset = 32.0
 
 [node name="Pin" type="StaticBody2D" parent="." unique_id=1950745112]
+position = Vector2(-8, -7)
 
 [node name="Nest" type="StaticBody2D" parent="." unique_id=612996299]
-position = Vector2(8, 7)
 scale = Vector2(2, 2)
 collision_layer = 32
 collision_mask = 0
 
 [node name="Nest" type="Polygon2D" parent="Nest" unique_id=1345965468]
 position = Vector2(0, -7.5)
-polygon = PackedVector2Array(-9, 5, 9, 5, 6, 10, -6, 10)
+polygon = PackedVector2Array(-9, 5, 9, 5, 7, 9, -7, 9)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Nest" unique_id=394936223]
 position = Vector2(0, -7.5)
-polygon = PackedVector2Array(-9, 5, -6, 8, 6, 8, 9, 5, 6, 10, -6, 10)
+polygon = PackedVector2Array(-9, 5, -6.5, 8.5, 6.5, 8.5, 9, 5, 7, 9, -7, 9)
 
 [connection signal="mouse_entered" from="Chicken" to="Chicken" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Chicken" to="Chicken" method="_on_mouse_exited"]
