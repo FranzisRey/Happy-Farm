@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://b3ippm3ajog2d"]
+
+[ext_resource type="PackedScene" uid="uid://dqc7cco438bky" path="res://Scenes/chicken.tscn" id="1_15ly4"]
+[ext_resource type="Script" uid="uid://4gqx6pijjw2p" path="res://Scripts/cameraZoomResetter.gd" id="1_q1bry"]
+[ext_resource type="Script" uid="uid://bsoylpxrs6u6i" path="res://Scripts/mouse_manager_chicken.gd" id="3_y7by7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_15ly4"]
+radius = 1.0
+
+[node name="Chicken_scene" type="Node2D" unique_id=1217332766]
+
+[node name="Chicken_pen" parent="." unique_id=1909793426 instance=ExtResource("1_15ly4")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1908298319]
+zoom = Vector2(4, 4)
+script = ExtResource("1_q1bry")
+
+[node name="Mouse" type="Area2D" parent="." unique_id=258431396]
+position = Vector2(-22, 7)
+collision_layer = 2
+collision_mask = 16
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+gravity = 3000.0
+script = ExtResource("3_y7by7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mouse" unique_id=1268172128]
+shape = SubResource("CircleShape2D_15ly4")

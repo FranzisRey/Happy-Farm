@@ -53,6 +53,16 @@ Right={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Mouse"
+2d_physics/layer_3="Mango"
+2d_physics/layer_4="Chicken"
+2d_physics/layer_5="Egg"
+2d_physics/layer_6="Nest"
+2d_physics/layer_7="Basket"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
