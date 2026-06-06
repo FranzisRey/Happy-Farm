@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 const SPEED = 3000.0
 var animationFrame = 0
+var dia = 1
 
 @onready var bodySprite = $BodySprite
 @onready var armSprite = $ArmSprite
@@ -58,5 +59,17 @@ func _physics_process(delta):
 		animationFrame = 0
 	#$Camera.global_position.x = roundi($Camera.global_position.x)
 	#$Camera.global_position.y = roundi($Camera.global_position.y)
+	if Input.is_action_just_pressed("LMB"):
+		match dia:
+			1:
+				GameManager.SetDialog("test 1", 1)
+				dia += 1
+			2: 
+				GameManager.SetDialog("test 2", 1)
+				dia += 1
+			3:
+				GameManager.SetDialog("", 0)
+				dia = 1
+				
 	move_and_slide()
 	

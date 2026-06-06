@@ -1,6 +1,34 @@
 [gd_scene format=3 uid="uid://duvduke7gs31s"]
 
 [ext_resource type="Script" uid="uid://c58dk8nxrbc3u" path="res://Scripts/game_manager.gd" id="1_1qqqt"]
+[ext_resource type="FontFile" uid="uid://y86yk32lo6wy" path="res://Fonts/TINY5-REGULAR.TTF" id="2_shkce"]
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="3_0pyuc"]
 
 [node name="Game Manager" type="Node2D" unique_id=381041790]
 script = ExtResource("1_1qqqt")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=384994853]
+
+[node name="DialogBox" type="Control" parent="CanvasLayer" unique_id=278453761]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 320.0
+offset_bottom = 180.0
+
+[node name="Label" type="Label" parent="CanvasLayer/DialogBox" unique_id=163142459]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 64.0
+offset_top = 116.0
+offset_right = 320.0
+offset_bottom = 179.0
+theme_override_fonts/font = ExtResource("2_shkce")
+theme_override_font_sizes/font_size = 8
+text = "TEST"
+metadata/_edit_use_anchors_ = true
+
+[node name="Icon" type="Sprite2D" parent="CanvasLayer/DialogBox" unique_id=1740944824]
+position = Vector2(32, 148)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_0pyuc")

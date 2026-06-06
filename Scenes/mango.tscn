@@ -6,7 +6,7 @@
 radius = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_abogf"]
-radius = 8.0
+radius = 4.0
 
 [node name="Mango" type="Node2D" unique_id=960435102]
 script = ExtResource("1_abogf")
@@ -14,6 +14,7 @@ script = ExtResource("1_abogf")
 [node name="PinJoint" type="PinJoint2D" parent="." unique_id=1824544209]
 node_a = NodePath("Pin")
 node_b = NodePath("Mango")
+softness = 5.0
 
 [node name="Pin" type="StaticBody2D" parent="PinJoint" unique_id=1127844060]
 disable_mode = 1
@@ -22,13 +23,15 @@ disable_mode = 1
 shape = SubResource("CircleShape2D_0aysh")
 disabled = true
 
-[node name="Mango" type="RigidBody2D" parent="PinJoint" unique_id=339123108]
+[node name="Mango" type="RigidBody2D" parent="PinJoint" unique_id=339123108 groups=["Mango"]]
 collision_layer = 4
-collision_mask = 66
+collision_mask = 70
+can_sleep = false
 
 [node name="CollisionShape" type="CollisionShape2D" parent="PinJoint/Mango" unique_id=789311204]
 shape = SubResource("CircleShape2D_abogf")
 
 [node name="Polygon" type="Polygon2D" parent="PinJoint/Mango" unique_id=697451608]
+scale = Vector2(0.5, 0.5)
 color = Color(1, 1, 0, 1)
 polygon = PackedVector2Array(0, -8, -8, 0, 0, 8, 8, 0)

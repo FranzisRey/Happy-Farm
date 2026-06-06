@@ -11,7 +11,7 @@ func _ready():
 		eggIn.position.y = -5
 		eggIn.z_index = -1
 		if randCount != 1:
-			eggIn.position.x = (5*(randCount-1))*((4-randCount)*i - (5-randCount))
+			eggIn.position.x = (-5*(randCount-1))+(10*(i-1))
 			add_child(eggIn)
 		else:
 			add_child(eggIn)

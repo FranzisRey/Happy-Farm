@@ -10,6 +10,13 @@ radius = 1.0
 [node name="Chicken_scene" type="Node2D" unique_id=1217332766]
 
 [node name="Chicken_pen" parent="." unique_id=1909793426 instance=ExtResource("1_15ly4")]
+position = Vector2(-142, 0)
+
+[node name="Chicken_pen2" parent="." unique_id=1702233184 instance=ExtResource("1_15ly4")]
+position = Vector2(-106, 0)
+
+[node name="Chicken_pen3" parent="." unique_id=338155633 instance=ExtResource("1_15ly4")]
+position = Vector2(-70, 0)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1908298319]
 zoom = Vector2(4, 4)
