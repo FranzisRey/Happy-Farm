@@ -11,6 +11,11 @@ var dia = 1
 
 
 func _ready():
+	if GameManager.saved_player_pos.is_finite():
+		position = GameManager.saved_player_pos
+		
+	await get_tree().create_timer(0.1).timeout
+	$Camera.position_smoothing_enabled = true
 	pass
 
 func _physics_process(delta):

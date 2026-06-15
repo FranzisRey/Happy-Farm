@@ -5,10 +5,11 @@ var mangoNode
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	mangoNode = preload("res://Scenes/mango.tscn")
 	await get_tree().create_timer(0).timeout
 	get_viewport().warp_mouse(get_viewport().size/5)
 	
-	mangoNode = preload("res://Scenes/mango.tscn")
+	
 	pass # Replace with function body.
 
 

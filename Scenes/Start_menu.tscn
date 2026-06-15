@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://b6co017ui34p1"]
+
+[ext_resource type="Script" uid="uid://l3mvngv6ljeb" path="res://Scripts/start_menu.gd" id="1_vset1"]
+[ext_resource type="Script" uid="uid://4gqx6pijjw2p" path="res://Scripts/cameraZoomResetter.gd" id="2_u88ce"]
+
+[node name="Start Menu" type="Control" unique_id=1440210505]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vset1")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=86630645]
+anchor_mode = 0
+zoom = Vector2(4, 4)
+script = ExtResource("2_u88ce")
+
+[node name="Button" type="Button" parent="." unique_id=677859232]
+layout_mode = 0
+offset_left = 135.0
+offset_top = 81.0
+offset_right = 181.0
+offset_bottom = 112.0
+text = "Start"
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]

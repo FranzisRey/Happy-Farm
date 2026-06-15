@@ -321,11 +321,11 @@ shape = SubResource("RectangleShape2D_cvnsp")
 
 [node name="BodySprite" type="AnimatedSprite2D" parent="." unique_id=1355124914]
 sprite_frames = SubResource("SpriteFrames_x3wgy")
-animation = &"Up"
+animation = &"Down"
 
 [node name="ArmSprite" type="AnimatedSprite2D" parent="." unique_id=1165072219]
 sprite_frames = SubResource("SpriteFrames_gymyn")
-animation = &"Up"
+animation = &"Down"
 
 [node name="HatSprite" type="AnimatedSprite2D" parent="." unique_id=1515487658]
 sprite_frames = SubResource("SpriteFrames_pu2lt")
@@ -334,6 +334,5 @@ animation = &"Down"
 [node name="Camera" type="Camera2D" parent="." unique_id=1724820537]
 zoom = Vector2(4, 4)
 process_callback = 0
-position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 script = ExtResource("3_6t5aa")

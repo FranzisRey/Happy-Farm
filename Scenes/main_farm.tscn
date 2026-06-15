@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://b1yb2hath2iy4"]
+
+[ext_resource type="PackedScene" uid="uid://be8qbmt0fe144" path="res://Scenes/player.tscn" id="1_3dogw"]
+[ext_resource type="Texture2D" uid="uid://b5op8ansih51v" path="res://Sprites/Barn_Map_Temp.jpg" id="1_r5l72"]
+
+[node name="Main Farm" type="Node2D" unique_id=2002135892]
+
+[node name="BarnMapTemp" type="Sprite2D" parent="." unique_id=1597678163]
+position = Vector2(206, 266)
+texture = ExtResource("1_r5l72")
+
+[node name="Player" parent="." unique_id=1373030580 instance=ExtResource("1_3dogw")]
+unique_name_in_owner = true
+position = Vector2(213, 241)
+
+[node name="Node2D" type="Node2D" parent="." unique_id=2091085891]
