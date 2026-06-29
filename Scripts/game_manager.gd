@@ -7,6 +7,7 @@ var StoryStage = 1
 @onready var label = $CanvasLayer/DialogBox/Label
 @onready var dialog_box = $CanvasLayer/DialogBox
 @onready var saved_player_pos:Vector2 = Vector2.INF
+@onready var icon = $CanvasLayer/DialogBox/Icon
 # Game is 320x180 
 
 
@@ -22,7 +23,11 @@ func _process(delta):
 	pass
 
 # x is where the dialog is, y is where the dialog is
-func SetDialog(text, ifVisible):
+#type = 0 is no icon, type = 1 has icon
+func SetDialog(text:String, ifVisible:bool, type:int, pfp:String):
+	label.offset_left = type*63 + 1
 	label.text = text
+	icon.visible = type
+	icon.texture = load(pfp)
 	dialog_box.visible = ifVisible
 	return false

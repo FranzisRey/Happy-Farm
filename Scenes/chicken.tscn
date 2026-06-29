@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dqc7cco438bky"]
 
 [ext_resource type="Script" uid="uid://bi1ngic3qoa2b" path="res://Scripts/chicken_manager.gd" id="1_7h841"]
-[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="1_245eq"]
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://Sprites/icon.svg" id="1_245eq"]
 [ext_resource type="Script" uid="uid://c7rsfngpdv670" path="res://Scripts/chicken_pickup.gd" id="1_jy3mo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jy3mo"]

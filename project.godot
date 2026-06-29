@@ -14,7 +14,7 @@ config/name="Happy Farm"
 run/main_scene="uid://b6co017ui34p1"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 run/max_fps=60
-config/icon="res://icon.svg"
+config/icon="res://Sprites/icon.svg"
 
 [autoload]
 

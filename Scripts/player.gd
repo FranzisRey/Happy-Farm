@@ -67,13 +67,13 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("LMB"):
 		match dia:
 			1:
-				GameManager.SetDialog("test 1", 1)
+				GameManager.SetDialog("test 1", 1, 1, "res://Sprites/icon.svg")
 				dia += 1
 			2: 
-				GameManager.SetDialog("test 2", 1)
+				GameManager.SetDialog("test 2", 1, 1, "res://Sprites/icon.svg")
 				dia += 1
 			3:
-				GameManager.SetDialog("", 0)
+				GameManager.SetDialog("", 0, 0, "")
 				dia = 1
 				
 	move_and_slide()

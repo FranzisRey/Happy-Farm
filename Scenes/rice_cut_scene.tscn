@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://4gqx6pijjw2p" path="res://Scripts/cameraZoomResetter.gd" id="1_g5aql"]
 [ext_resource type="Shader" uid="uid://0dobemnptju3" path="res://Shaders/rice_cut_shader.gdshader" id="2_3y2gg"]
-[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="3_uveq3"]
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://Sprites/icon.svg" id="3_uveq3"]
 [ext_resource type="Script" uid="uid://c03j1mvc3g1wf" path="res://Scripts/rice_cut.gd" id="4_jvxu6"]
 [ext_resource type="Script" uid="uid://bgfig2w71hbar" path="res://Scripts/mouse_manager_mango.gd" id="5_7e167"]
 
