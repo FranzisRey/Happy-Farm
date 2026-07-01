@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://b3abe0kx2p3nb"]
+
+[ext_resource type="Texture2D" uid="uid://bb4sbw4tgsrua" path="res://Sprites/house_tmp.jpg" id="1_3jr7h"]
+[ext_resource type="Script" uid="uid://bnhynseyfyvfk" path="res://Scripts/house_manager.gd" id="1_iqtyj"]
+[ext_resource type="Script" uid="uid://4gqx6pijjw2p" path="res://Scripts/cameraZoomResetter.gd" id="2_iqtyj"]
+[ext_resource type="PackedScene" uid="uid://be8qbmt0fe144" path="res://Scenes/player.tscn" id="3_xi0mm"]
+
+[node name="House" type="Node2D" unique_id=1048913792]
+script = ExtResource("1_iqtyj")
+
+[node name="HouseTmp" type="Sprite2D" parent="." unique_id=1139453446]
+position = Vector2(69, -144)
+scale = Vector2(0.65978456, 0.65978456)
+texture = ExtResource("1_3jr7h")
+
+[node name="Player" parent="." unique_id=1373030580 instance=ExtResource("3_xi0mm")]
+position = Vector2(221, -255)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1919436430]
+enabled = false
+zoom = Vector2(4, 4)
+limit_enabled = false
+script = ExtResource("2_iqtyj")

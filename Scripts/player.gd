@@ -8,10 +8,12 @@ var dia = 1
 @onready var bodySprite = $BodySprite
 @onready var armSprite = $ArmSprite
 @onready var hatSprite = $HatSprite
-
+@onready var camera = $Camera
+@export var enabledLol = true
 
 func _ready():
-	if GameManager.saved_player_pos.is_finite():
+	camera.enabled = enabledLol
+	if GameManager.saved_player_pos.is_finite() && get_tree().current_scene.name == "Main Farm":
 		position = GameManager.saved_player_pos
 		
 	await get_tree().create_timer(0.1).timeout
@@ -19,8 +21,11 @@ func _ready():
 	pass
 
 func _physics_process(delta):
+	$Camera.global_position.x = round(global_position.x)
+	$Camera.global_position.y = round(global_position.y)
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
+	camera.enabled = enabledLol
 	var xDir = Input.get_axis("Left", "Right")
 	var yDir = Input.get_axis("Up", "Down")
 	var isMoving = 0
@@ -62,19 +67,12 @@ func _physics_process(delta):
 		armSprite.stop()
 		hatSprite.stop()
 		animationFrame = 0
+	
+	global_position.x = round(global_position.x)
+	global_position.y = round(global_position.y)
 	#$Camera.global_position.x = roundi($Camera.global_position.x)
 	#$Camera.global_position.y = roundi($Camera.global_position.y)
-	if Input.is_action_just_pressed("LMB"):
-		match dia:
-			1:
-				GameManager.SetDialog("test 1", 1, 1, "res://Sprites/icon.svg")
-				dia += 1
-			2: 
-				GameManager.SetDialog("test 2", 1, 1, "res://Sprites/icon.svg")
-				dia += 1
-			3:
-				GameManager.SetDialog("", 0, 0, "")
-				dia = 1
-				
+	#$Camera.global_position.x = round(global_position.x)
+	#$Camera.global_position.y = round(global_position.y)
 	move_and_slide()
 	
