@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dbdnk3vm17w4r"]
 
 [ext_resource type="Script" uid="uid://dgnn7h5tksgme" path="res://Scripts/mango.gd" id="1_abogf"]
+[ext_resource type="Texture2D" uid="uid://det5tddy3fqch" path="res://Sprites/Minigame stuff.png" id="2_nnmhy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0aysh"]
 radius = 1.0
@@ -31,7 +32,7 @@ can_sleep = false
 [node name="CollisionShape" type="CollisionShape2D" parent="PinJoint/Mango" unique_id=789311204]
 shape = SubResource("CircleShape2D_abogf")
 
-[node name="Polygon" type="Polygon2D" parent="PinJoint/Mango" unique_id=697451608]
-scale = Vector2(0.5, 0.5)
-color = Color(1, 1, 0, 1)
-polygon = PackedVector2Array(0, -8, -8, 0, 0, 8, 8, 0)
+[node name="Mango" type="Sprite2D" parent="PinJoint/Mango" unique_id=207439901]
+texture = ExtResource("2_nnmhy")
+region_enabled = true
+region_rect = Rect2(20, 4, 8, 8)

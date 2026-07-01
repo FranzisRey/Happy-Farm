@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://i4dqiwu3hdmh"]
 
 [ext_resource type="Script" uid="uid://dj18i1yca62xg" path="res://Scripts/egg_cracking.gd" id="1_jdgtd"]
+[ext_resource type="Texture2D" uid="uid://det5tddy3fqch" path="res://Sprites/Minigame stuff.png" id="2_1iuog"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vgq1g"]
 radius = 4.0
@@ -16,9 +17,6 @@ script = ExtResource("1_jdgtd")
 [node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=396799693]
 shape = SubResource("CapsuleShape2D_vgq1g")
 
-[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1655578509]
-polygon = PackedVector2Array(0, -6, -4, 0, -4, 2, -2, 5, 0, 6, 2, 5, 4, 2, 4, 0)
-
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=304669331]
 emitting = false
 amount = 16
@@ -29,5 +27,10 @@ direction = Vector2(0, 0)
 spread = 180.0
 initial_velocity_min = 50.0
 initial_velocity_max = 100.0
+
+[node name="Egg" type="Sprite2D" parent="." unique_id=443045615]
+texture = ExtResource("2_1iuog")
+region_enabled = true
+region_rect = Rect2(4, 2, 8, 12)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

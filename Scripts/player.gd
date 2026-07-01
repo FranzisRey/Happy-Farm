@@ -15,8 +15,11 @@ func _ready():
 	camera.enabled = enabledLol
 	if GameManager.saved_player_pos.is_finite() && get_tree().current_scene.name == "Main Farm":
 		position = GameManager.saved_player_pos
-		
+	if get_tree().current_scene.name != "Main Farm":
+		hatSprite.visible = false
+	
 	await get_tree().create_timer(0.1).timeout
+	
 	$Camera.position_smoothing_enabled = true
 	pass
 

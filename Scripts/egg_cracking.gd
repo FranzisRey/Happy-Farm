@@ -10,7 +10,7 @@ func _ready():
 func _on_body_entered(body):
 	print(lastVelocity.length())
 	if lastVelocity.length() >= 200:
-		$Polygon2D.visible = false
+		$Egg.visible = false
 		freeze = true
 		$CollisionShape.disabled = true
 		$CPUParticles2D.emitting = true
