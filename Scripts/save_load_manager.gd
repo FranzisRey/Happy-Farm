@@ -6,8 +6,10 @@ func Save():
 	if has_node("/root/Main Farm/Player"):
 		savedGame.player_pos = $"/root/Main Farm/Player".position
 	else:
-		var savedgame2:SavedGame = load("res://savegame.tres")
-		savedGame.player_pos = savedgame2.player_pos
+		if FileAccess.file_exists("res://savegame.tres"):
+			var savedgame2:SavedGame = load("res://savegame.tres")
+			if get_tree().current_scene.name == "Main Farm":
+				savedGame.player_pos = savedgame2.player_pos
 		
 	savedGame.storyStage = GameManager.StoryStage
 	

@@ -1,0 +1,38 @@
+[gd_resource type="Theme" format=3 uid="uid://dckpdjafn2qat"]
+
+[ext_resource type="FontFile" uid="uid://y86yk32lo6wy" path="res://Fonts and Stuff/TINY5-REGULAR.TTF" id="1_amlv4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_amlv4"]
+bg_color = Color(1, 0.21484375, 0.21484375, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i7eh4"]
+bg_color = Color(1, 0.18359375, 0.18359375, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_78ylj"]
+bg_color = Color(1, 0.18431373, 0.18431373, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+expand_margin_left = 8.0
+expand_margin_right = 8.0
+
+[resource]
+default_font = ExtResource("1_amlv4")
+Button/font_sizes/font_size = 8
+Button/styles/focus = SubResource("StyleBoxFlat_amlv4")
+Button/styles/hover = null
+Button/styles/normal = SubResource("StyleBoxFlat_i7eh4")
+Label/font_sizes/font_size = 8
+Label/styles/normal = SubResource("StyleBoxFlat_78ylj")

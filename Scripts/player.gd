@@ -10,6 +10,7 @@ var dia = 1
 @onready var hatSprite = $HatSprite
 @onready var camera = $Camera
 @export var enabledLol = true
+@export var canMove = true
 
 func _ready():
 	camera.enabled = enabledLol
@@ -17,6 +18,9 @@ func _ready():
 		position = GameManager.saved_player_pos
 	if get_tree().current_scene.name != "Main Farm":
 		hatSprite.visible = false
+		
+	if GameManager.StoryStage == 1 || GameManager.StoryStage == 2:
+		position = Vector2(398,-568)
 	
 	await get_tree().create_timer(0.1).timeout
 	
@@ -32,17 +36,20 @@ func _physics_process(delta):
 	var xDir = Input.get_axis("Left", "Right")
 	var yDir = Input.get_axis("Up", "Down")
 	var isMoving = 0
-	if xDir:
-		velocity.x = xDir * SPEED * delta
-		isMoving = true
+	if !(!canMove || GameManager.InCutscene):
+		if xDir:
+			velocity.x = xDir * SPEED * delta
+			isMoving = true
+		else:
+			velocity.x = 0
+			
+		if yDir:
+			velocity.y = yDir * SPEED * delta
+			isMoving = true
+		else:
+			velocity.y = 0
 	else:
-		velocity.x = 0
-		
-	if yDir:
-		velocity.y = yDir * SPEED * delta
-		isMoving = true
-	else:
-		velocity.y = 0
+		velocity = Vector2.ZERO
 	velocity.normalized()
 	# Manage the animation
 	if isMoving:
