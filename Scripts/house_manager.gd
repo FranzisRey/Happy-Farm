@@ -34,9 +34,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	#this is for story thing
-	print(GameManager.InCutscene)
-	if dialogueStage != -1:
-		if GameManager.StoryStage == 1:
+	if GameManager.StoryStage == 1:
+		if dialogueStage != -1:
 			if Input.is_action_just_pressed("LMB") && !GameManager.TextSlowShowing && dialWait:
 				dialogueStage += 1
 				match(dialogueStage):
@@ -59,7 +58,7 @@ func _process(delta):
 						GameManager.SetDialog("Siguro nagtatanghalian na sila.", true, 0, "", 3)
 					6:
 						dialogueStage = -1
-						GameManager.SetDialog("", false, 0, "", 6)
+						GameManager.SetDialog("", false, 0, "", -1)
 						player.canMove = true
 						GameManager.InCutscene = false
 						GameManager.StoryStage = 2

@@ -3,6 +3,7 @@
 [ext_resource type="Theme" uid="uid://dckpdjafn2qat" path="res://Fonts and Stuff/Baisc_theme.tres" id="1_ujv4v"]
 
 [node name="Check Button" type="Button" unique_id=882308414]
+z_index = 1
 offset_right = 32.0
 offset_bottom = 16.0
 focus_mode = 0

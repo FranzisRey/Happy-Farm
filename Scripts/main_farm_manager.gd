@@ -3,6 +3,7 @@ extends Node2D
 @onready var area_2d = $House/Area2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	GameManager.PlayBlackAnim(1)
 	pass # Replace with function body.
 
 

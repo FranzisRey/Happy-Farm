@@ -178,5 +178,3 @@ width = 2.0
 
 [node name="NextRowAnim" type="AnimationPlayer" parent="." unique_id=1395002058]
 libraries/ = SubResource("AnimationLibrary_uveq3")
-
-[node name="StoryStage" type="Node2D" parent="." unique_id=380181735]

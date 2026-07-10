@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://cpln4nhvoqwpp"]
+
+[ext_resource type="Script" uid="uid://4gqx6pijjw2p" path="res://Scripts/cameraZoomResetter.gd" id="1_g5aql"]
+[ext_resource type="Script" uid="uid://c1xqk654m5bab" path="res://Scripts/rice_cut_manager.gd" id="1_k22yq"]
+[ext_resource type="PackedScene" uid="uid://bcb0g85qgqnnb" path="res://Scenes/Rice crop.tscn" id="3_euuvj"]
+[ext_resource type="Script" uid="uid://bgfig2w71hbar" path="res://Scripts/mouse_manager_mango.gd" id="5_7e167"]
+
+[node name="Wheat Scene" type="Node2D" unique_id=373161630]
+script = ExtResource("1_k22yq")
+
+[node name="CutTimer" type="Timer" parent="." unique_id=1464534969]
+wait_time = 0.2
+one_shot = true
+
+[node name="Rice crop" parent="." unique_id=1199876418 instance=ExtResource("3_euuvj")]
+position = Vector2(0, -16)
+
+[node name="Rice crop2" parent="." unique_id=406135311 instance=ExtResource("3_euuvj")]
+position = Vector2(40, -16)
+
+[node name="Rice crop3" parent="." unique_id=782133124 instance=ExtResource("3_euuvj")]
+position = Vector2(98, -16)
+
+[node name="Camera" type="Camera2D" parent="." unique_id=815973580]
+zoom = Vector2(4, 4)
+script = ExtResource("1_g5aql")
+
+[node name="Mouse Manager" type="Node2D" parent="." unique_id=2040694741]
+script = ExtResource("5_7e167")
+
+[node name="Line" type="Line2D" parent="Mouse Manager" unique_id=1398975701]
+points = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+width = 2.0

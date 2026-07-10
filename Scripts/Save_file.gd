@@ -3,3 +3,4 @@ extends Resource
 
 @export var player_pos:Vector2
 @export var storyStage:int
+@export var rice_cut_rank:int

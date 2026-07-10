@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cpln4nhvoqwpp"]
+
+[ext_resource type="Script" uid="uid://4gqx6pijjw2p" path="res://Scripts/cameraZoomResetter.gd" id="1_g5aql"]
+[ext_resource type="Shader" uid="uid://0dobemnptju3" path="res://Shaders/rice_cut_shader.gdshader" id="2_3y2gg"]
+[ext_resource type="Texture2D" uid="uid://det5tddy3fqch" path="res://Sprites/Minigame stuff.png" id="3_g5aql"]
+[ext_resource type="Script" uid="uid://c03j1mvc3g1wf" path="res://Scripts/rice_cut.gd" id="4_jvxu6"]
+[ext_resource type="Script" uid="uid://bgfig2w71hbar" path="res://Scripts/mouse_manager_mango.gd" id="5_7e167"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8y4eo"]
+shader = ExtResource("2_3y2gg")
+shader_parameter/slope = 0.0
+shader_parameter/offset = 15.085
+
+[node name="Wheat Scene" type="Node2D" unique_id=373161630]
+
+[node name="CutTimer" type="Timer" parent="." unique_id=1464534969]
+wait_time = 0.2
+one_shot = true
+
+[node name="Camera" type="Camera2D" parent="." unique_id=815973580]
+zoom = Vector2(4, 4)
+script = ExtResource("1_g5aql")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=148904975 node_paths=PackedStringArray("mouse_manager")]
+material = SubResource("ShaderMaterial_8y4eo")
+texture = ExtResource("3_g5aql")
+region_enabled = true
+region_rect = Rect2(0, 80, 16, 32)
+script = ExtResource("4_jvxu6")
+mouse_manager = NodePath("../Mouse Manager")
+
+[node name="Mouse Manager" type="Node2D" parent="." unique_id=2040694741]
+script = ExtResource("5_7e167")
+
+[node name="Line" type="Line2D" parent="Mouse Manager" unique_id=1398975701]
+points = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+width = 2.0

@@ -10,6 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://njg48lq3n5i3" path="res://Sprites/Bed.png" id="7_l3jqw"]
 [ext_resource type="Texture2D" uid="uid://ggg305j8e6g1" path="res://Sprites/Window.png" id="8_gau5j"]
 [ext_resource type="Texture2D" uid="uid://x4kjbrtt41jl" path="res://Sprites/TableAndChair.png" id="10_lmwq5"]
+[ext_resource type="Script" uid="uid://crvdnbedyidml" path="res://Scripts/Storyish based scripts/house_story_stage_2.gd" id="11_0h1dt"]
+[ext_resource type="PackedScene" uid="uid://ds441bysyypk" path="res://Scenes/sister.tscn" id="11_x4svt"]
+[ext_resource type="PackedScene" uid="uid://cucnmo24mu773" path="res://Scenes/dad.tscn" id="12_ttg8n"]
+[ext_resource type="PackedScene" uid="uid://cxajr2y8ftopq" path="res://Scenes/check_button.tscn" id="14_karln"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l3jqw"]
 texture = ExtResource("3_bu6dc")
@@ -183,6 +187,18 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0h1dt"]
 size = Vector2(32, 16)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_karln"]
+size = Vector2(64, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4dwi4"]
+size = Vector2(41, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j14gn"]
+size = Vector2(32, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tj63m"]
+size = Vector2(20, 1)
+
 [node name="House" type="Node2D" unique_id=1048913792]
 y_sort_enabled = true
 script = ExtResource("1_iqtyj")
@@ -289,7 +305,7 @@ shape = SubResource("RectangleShape2D_0h1dt")
 
 [node name="Table and Chair" type="Node2D" parent="." unique_id=443889316]
 y_sort_enabled = true
-position = Vector2(208, -143)
+position = Vector2(192, -143)
 
 [node name="Table" type="Sprite2D" parent="Table and Chair" unique_id=640384990]
 y_sort_enabled = true
@@ -299,14 +315,14 @@ region_rect = Rect2(0, 0, 64, 32)
 
 [node name="Chair 1" type="Sprite2D" parent="Table and Chair" unique_id=2000104020]
 y_sort_enabled = true
-position = Vector2(-13, -8)
+position = Vector2(-13, -11)
 texture = ExtResource("10_lmwq5")
 region_enabled = true
 region_rect = Rect2(64, 0, 16, 32)
 
 [node name="Chair 2" type="Sprite2D" parent="Table and Chair" unique_id=1742519010]
 y_sort_enabled = true
-position = Vector2(13, -8)
+position = Vector2(13, -11)
 texture = ExtResource("10_lmwq5")
 region_enabled = true
 region_rect = Rect2(64, 0, 16, 32)
@@ -324,3 +340,57 @@ position = Vector2(13, 7)
 texture = ExtResource("10_lmwq5")
 region_enabled = true
 region_rect = Rect2(80, 0, 16, 32)
+
+[node name="TableCol" type="AnimatableBody2D" parent="Table and Chair" unique_id=1483013009]
+collision_layer = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Table and Chair/TableCol" unique_id=314362299]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_karln")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Table and Chair/TableCol" unique_id=607586197]
+z_index = 1
+position = Vector2(-0.5, 7)
+shape = SubResource("RectangleShape2D_4dwi4")
+
+[node name="StoryStage2" type="Node2D" parent="." unique_id=331773442]
+y_sort_enabled = true
+position = Vector2(-16, 0)
+script = ExtResource("11_0h1dt")
+
+[node name="Sister" parent="StoryStage2" unique_id=161219978 instance=ExtResource("11_x4svt")]
+position = Vector2(221, -154)
+
+[node name="Dad" parent="StoryStage2" unique_id=356480342 instance=ExtResource("12_ttg8n")]
+position = Vector2(195, -137)
+
+[node name="No leaving" type="Area2D" parent="StoryStage2" unique_id=1461772784]
+collision_layer = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StoryStage2/No leaving" unique_id=969053039]
+position = Vector2(112, -66)
+shape = SubResource("RectangleShape2D_j14gn")
+
+[node name="Sit Down" parent="StoryStage2" unique_id=882308414 instance=ExtResource("14_karln")]
+offset_left = 210.0
+offset_top = -192.0
+offset_right = 244.0
+offset_bottom = -176.0
+text = "Sit Down"
+alignment = 2
+
+[node name="PlayerIsClose" type="Area2D" parent="StoryStage2/Sit Down" unique_id=1754065152]
+position = Vector2(0, -15)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StoryStage2/Sit Down/PlayerIsClose" unique_id=104407369]
+position = Vector2(-15, 51.5)
+shape = SubResource("RectangleShape2D_tj63m")
+
+[node name="Camera2D" type="Camera2D" parent="StoryStage2" unique_id=1278062017]
+position = Vector2(208, -121)
+enabled = false
+zoom = Vector2(4, 4)
+script = ExtResource("2_iqtyj")
+
+[connection signal="button_down" from="StoryStage2/Sit Down" to="StoryStage2" method="_on_sit_down_button_down"]

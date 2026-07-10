@@ -4,11 +4,7 @@
 [ext_resource type="Script" uid="uid://b1dkvxn80jg5n" path="res://Scripts/main_farm_manager.gd" id="1_aq8tc"]
 [ext_resource type="Texture2D" uid="uid://b1x4rdfe5w6va" path="res://Sprites/Grass and Path.png" id="1_gqiv3"]
 [ext_resource type="Texture2D" uid="uid://b5op8ansih51v" path="res://Sprites/Barn_Map_Temp.jpg" id="1_r5l72"]
-[ext_resource type="Texture2D" uid="uid://e24mrmm84i1w" path="res://Sprites/THE HOUSE.png" id="5_74g2k"]
-[ext_resource type="Script" uid="uid://38yors3odbns" path="res://Scripts/Storyish based scripts/main_farm_story_stage_3.gd" id="6_74g2k"]
-[ext_resource type="PackedScene" uid="uid://ds441bysyypk" path="res://Scenes/sister.tscn" id="7_fggfr"]
-[ext_resource type="Texture2D" uid="uid://e75bihd03qf2" path="res://Sprites/Rice field.png" id="8_2wjl8"]
-[ext_resource type="PackedScene" uid="uid://cxajr2y8ftopq" path="res://Scenes/check_button.tscn" id="9_42yyb"]
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://Sprites/icon.svg" id="5_74g2k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mafmv"]
 texture = ExtResource("1_gqiv3")
@@ -95,20 +91,7 @@ terrain_set_0/terrain_1/name = "Grass"
 terrain_set_0/terrain_1/color = Color(0.11327335, 0.97005206, 0.016420133, 1)
 sources/0 = SubResource("TileSetAtlasSource_mafmv")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_42yyb"]
-size = Vector2(300, 144)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2wjl8"]
-size = Vector2(80, 78)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_74g2k"]
-size = Vector2(79, 78)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fggfr"]
-size = Vector2(22, 34)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4h5dr"]
-size = Vector2(16, 1)
 
 [node name="Main Farm" type="Node2D" unique_id=2002135892]
 y_sort_enabled = true
@@ -125,84 +108,29 @@ tile_set = SubResource("TileSet_aq8tc")
 
 [node name="Player" parent="." unique_id=1373030580 instance=ExtResource("1_3dogw")]
 unique_name_in_owner = true
-position = Vector2(288, 175)
+y_sort_enabled = false
+position = Vector2(208, 256)
 
 [node name="Node2D" type="Node2D" parent="." unique_id=2091085891]
 
 [node name="BarnMapTemp" type="Sprite2D" parent="." unique_id=1597678163]
-visible = false
-modulate = Color(1.7055094, 1.7055094, 1.7055094, 0.28627452)
+modulate = Color(1.7055094, 1.7055094, 1.7055094, 0.078431375)
 position = Vector2(206, 266)
 texture = ExtResource("1_r5l72")
-
-[node name="Rice Field" type="Node2D" parent="." unique_id=1016887356]
-y_sort_enabled = true
-position = Vector2(1010, 120)
-
-[node name="RiceField" type="Sprite2D" parent="Rice Field" unique_id=535188030]
-y_sort_enabled = true
-position = Vector2(-18, 0)
-texture = ExtResource("8_2wjl8")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Rice Field" unique_id=1019382200]
-visible = false
-collision_layer = 128
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Rice Field/StaticBody2D" unique_id=756049758]
-position = Vector2(-8, 0)
-shape = SubResource("RectangleShape2D_42yyb")
 
 [node name="House" type="Node2D" parent="." unique_id=1222702151]
 y_sort_enabled = true
 
-[node name="StaticBody2D" type="StaticBody2D" parent="House" unique_id=544312517]
-z_index = 1
-position = Vector2(18, 0)
-collision_layer = 128
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="House/StaticBody2D" unique_id=49408400]
-position = Vector2(214, 153)
-shape = SubResource("RectangleShape2D_2wjl8")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="House/StaticBody2D" unique_id=132842147]
-position = Vector2(326.5, 153)
-shape = SubResource("RectangleShape2D_74g2k")
+[node name="Icon" type="Sprite2D" parent="House" unique_id=1760179453]
+y_sort_enabled = true
+position = Vector2(210.00002, 96)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_74g2k")
 
 [node name="Area2D" type="Area2D" parent="House" unique_id=1635038059]
 y_sort_enabled = true
-position = Vector2(288, 159)
+position = Vector2(208, 176)
 collision_layer = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="House/Area2D" unique_id=1239057385]
-position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_fggfr")
-
-[node name="TheHouse" type="Sprite2D" parent="House" unique_id=775461873]
-position = Vector2(288, 128)
-texture = ExtResource("5_74g2k")
-
-[node name="StoryStage3" type="Node2D" parent="." unique_id=648357357]
-y_sort_enabled = true
-position = Vector2(-1, -10)
-script = ExtResource("6_74g2k")
-
-[node name="Sister" parent="StoryStage3" unique_id=161219978 instance=ExtResource("7_fggfr")]
-position = Vector2(1016, 211)
-
-[node name="Player Check" type="Area2D" parent="StoryStage3" unique_id=1842767408]
-position = Vector2(2, 5)
-collision_layer = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StoryStage3/Player Check" unique_id=1908491454]
-z_index = 1
-position = Vector2(1014, 223.5)
-shape = SubResource("RectangleShape2D_4h5dr")
-
-[node name="Talk" parent="StoryStage3/Player Check" unique_id=882308414 instance=ExtResource("9_42yyb")]
-offset_left = 1002.0
-offset_top = 170.0
-offset_right = 1026.0
-offset_bottom = 186.0
-text = "Talk"
-
-[connection signal="pressed" from="StoryStage3/Player Check/Talk" to="StoryStage3" method="_on_talk_pressed"]

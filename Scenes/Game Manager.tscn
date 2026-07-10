@@ -4,8 +4,6 @@
 [ext_resource type="Theme" uid="uid://dckpdjafn2qat" path="res://Fonts and Stuff/Baisc_theme.tres" id="2_0pyuc"]
 [ext_resource type="Script" uid="uid://mrdfrdjrk3u0" path="res://Scripts/save_load_manager.gd" id="4_f1e5s"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_0pyuc"]
-
 [sub_resource type="Animation" id="Animation_f1e5s"]
 resource_name = "From_black"
 tracks/0/type = "value"
@@ -81,13 +79,13 @@ anchors_preset = -1
 anchor_left = -0.025
 anchor_right = -0.025
 offset_left = 16.0
-offset_top = 116.0
+offset_top = 131.0
 offset_right = 320.0
 offset_bottom = 179.0
 theme = ExtResource("2_0pyuc")
-text = "Gabi na and dating ko dito, pero nasa akin naman kung bakit."
-label_settings = SubResource("LabelSettings_0pyuc")
-autowrap_mode = 1
+text = "asdm"
+autowrap_mode = 2
+visible_characters_behavior = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Icon" type="Sprite2D" parent="CanvasLayer/DialogBox" unique_id=1740944824]
@@ -102,4 +100,8 @@ script = ExtResource("4_f1e5s")
 
 [node name="MinTimeLoad" type="Timer" parent="." unique_id=689573082]
 wait_time = 0.15
+one_shot = true
+
+[node name="WhenComma" type="Timer" parent="." unique_id=72203972]
+wait_time = 0.2
 one_shot = true

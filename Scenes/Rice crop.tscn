@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://bcb0g85qgqnnb"]
+
+[ext_resource type="Shader" uid="uid://0dobemnptju3" path="res://Shaders/rice_cut_shader.gdshader" id="1_os06x"]
+[ext_resource type="Texture2D" uid="uid://7yee472xvs2q" path="res://Sprites/Rice Crop Images/sprite-4-1.png" id="2_uxp68"]
+[ext_resource type="Texture2D" uid="uid://bvl52d10td7m6" path="res://Sprites/Rice Crop Images/sprite-4-2.png" id="3_4ik7e"]
+[ext_resource type="Script" uid="uid://c03j1mvc3g1wf" path="res://Scripts/rice_cut.gd" id="3_ii7eq"]
+[ext_resource type="Texture2D" uid="uid://bo57nmpuqwwwj" path="res://Sprites/Rice Crop Images/sprite-4-3.png" id="4_yxdi6"]
+[ext_resource type="Texture2D" uid="uid://bdqlec8rn4my1" path="res://Sprites/Rice Crop Images/sprite-4-4.png" id="5_noq6h"]
+[ext_resource type="Texture2D" uid="uid://d1rlx3jxju6kp" path="res://Sprites/Rice Crop Images/sprite-4-5.png" id="6_qidi8"]
+[ext_resource type="Texture2D" uid="uid://dtnc8jge0ktn8" path="res://Sprites/Rice Crop Images/sprite-4-6.png" id="7_j8mak"]
+[ext_resource type="Texture2D" uid="uid://b0k3mrprxh6g2" path="res://Sprites/Rice Crop Images/sprite-4-7.png" id="8_h4j6d"]
+[ext_resource type="Texture2D" uid="uid://c6pg0nf02jqfl" path="res://Sprites/Rice Crop Images/sprite-4-8.png" id="9_oi6lq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uxp68"]
+shader = ExtResource("1_os06x")
+shader_parameter/slope = 0.0
+shader_parameter/offset = 32.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j8mak"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_uxp68")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4ik7e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_yxdi6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_noq6h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_qidi8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_j8mak")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_h4j6d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_oi6lq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Rice crop" type="AnimatedSprite2D" unique_id=1199876418 groups=["Rice crop"]]
+material = SubResource("ShaderMaterial_uxp68")
+sprite_frames = SubResource("SpriteFrames_j8mak")
+script = ExtResource("3_ii7eq")

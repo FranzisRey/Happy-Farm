@@ -5,6 +5,7 @@ var ifMouseIsDown = false
 var CutPoints = [Vector2(NAN,NAN),Vector2(NAN,NAN)]
 var cutAction = false
 var mouseHeld = false
+signal finished
 
 @onready var cut_timer = $"../CutTimer"
 # Called when the node enters the scene tree for the first time.
@@ -25,6 +26,7 @@ func _process(delta):
 		if(cut_timer.is_stopped()):
 			if cutAction && is_nan(CutPoints[1][0]):
 				CutPoints[1] = get_global_mouse_position()
+				finished.emit()
 			cutAction = false
 		mouseHeld = true
 	else:

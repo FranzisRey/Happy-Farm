@@ -3,7 +3,8 @@ extends Node2D
 var windowToCameraRatio
 var windowSize
 var ifBig = true
-var StoryStage = 1
+var StoryStage = -1
+var rice_cut_rank = -1
 @onready var label = $CanvasLayer/DialogBox/Label
 @onready var dialog_box = $CanvasLayer/DialogBox
 @onready var saved_player_pos:Vector2 = Vector2.INF
@@ -12,6 +13,7 @@ var InCutscene:bool = false
 var TextSlowShowing = false
 var TextShowingTime = 0
 var TextShowSpeed = 1
+signal TextIsFinsihed
 
 var MinTimeLoadStart: bool = false
 
@@ -22,6 +24,7 @@ var scene_path
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	saved_player_pos = Vector2.INF
 	$SaveLoadManager.Load()
 	get_window().content_scale_size = Vector2i(320, 180)
 	pass # Replace with function body.
@@ -29,13 +32,20 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
 	if TextSlowShowing && InCutscene:
-		TextShowingTime += 1
+		if $WhenComma.is_stopped():
+			TextShowingTime += 1
 		if TextShowingTime >= TextShowSpeed:
 			label.visible_characters += 1
 			TextShowingTime = 0
+			if label.text[label.visible_characters-1] == ",":
+				$WhenComma.start()
 		if label.visible_ratio >= 1:
+			TextIsFinsihed.emit()
+			TextSlowShowing = false
+			
+		if TextShowSpeed == -1:
+			label.visible_ratio = 1
 			TextSlowShowing = false
 	
 	if scene_loading:
@@ -74,7 +84,7 @@ func ChangeToPlace(id:int, index:int):
 		MinTimeLoadStart = true
 	if id == 1:
 		if index:
-			saved_player_pos = Vector2(208, 192+6)
+			saved_player_pos = Vector2(288, 175)
 			scene_path = "res://Scenes/main_farm.tscn"
 			ResourceLoader.load_threaded_request(scene_path)
 			scene_loading = true
@@ -85,10 +95,19 @@ func ChangeToPlace(id:int, index:int):
 			scene_loading = true
 			PlayBlackAnim(0)
 			pass
+			
+func ChangeSceneNormal(path:String):
+	if !MinTimeLoadStart:
+		$MinTimeLoad.start()
+		MinTimeLoadStart = true
+	scene_path = path
+	ResourceLoader.load_threaded_request(scene_path)
+	scene_loading = true
+	PlayBlackAnim(0)
 
 # x is where the dialog is, y is where the dialog is
 #type = 0 is no icon, type = 1 has icon
-func SetDialog(text:String, ifVisible:bool, type:int, pfp:String, spd:int):
+func SetDialog(text:String = "", ifVisible:bool = false, type:int = 0, pfp:String = "", spd:int = -1):
 	if !TextSlowShowing:
 		label.visible_characters = 0
 	if ifVisible:

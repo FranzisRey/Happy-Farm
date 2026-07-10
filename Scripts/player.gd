@@ -19,7 +19,7 @@ func _ready():
 	if get_tree().current_scene.name != "Main Farm":
 		hatSprite.visible = false
 		
-	if GameManager.StoryStage == 1 || GameManager.StoryStage == 2:
+	if (GameManager.StoryStage == 1 || GameManager.StoryStage == 2) && get_tree().current_scene.name != "Main Farm":
 		position = Vector2(398,-568)
 	
 	await get_tree().create_timer(0.1).timeout
