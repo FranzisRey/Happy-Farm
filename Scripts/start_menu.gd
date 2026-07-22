@@ -3,7 +3,13 @@ extends Control
 func _on_button_button_down():
 	if GameManager.StoryStage == -1:
 		GameManager.StoryStage = 1
-	if GameManager.StoryStage == 1 || GameManager.StoryStage == 2:
+		
+		
+	if GameManager.StoryStage == 1:
+		GameManager.PlayBlackAnim(0)
+		await get_tree().create_timer(.75).timeout
+		GameManager.ChangeSceneNormal("res://Scenes/house.tscn", false)
+	elif GameManager.StoryStage == 2:
 		GameManager.PlayBlackAnim(0)
 		await get_tree().create_timer(.75).timeout
 		GameManager.ChangeSceneNormal("res://Scenes/house.tscn")

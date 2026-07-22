@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c58dk8nxrbc3u" path="res://Scripts/game_manager.gd" id="1_1qqqt"]
 [ext_resource type="Theme" uid="uid://dckpdjafn2qat" path="res://Fonts and Stuff/Baisc_theme.tres" id="2_0pyuc"]
+[ext_resource type="Texture2D" uid="uid://d0jfee2srl47p" path="res://Sprites/Player png faces/1Player_Calm(nohat).png" id="3_f1e5s"]
 [ext_resource type="Script" uid="uid://mrdfrdjrk3u0" path="res://Scripts/save_load_manager.gd" id="4_f1e5s"]
 
 [sub_resource type="Animation" id="Animation_f1e5s"]
@@ -77,20 +78,22 @@ offset_bottom = 180.0
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.025
+anchor_top = 0.0055555557
 anchor_right = -0.025
-offset_left = 16.0
+anchor_bottom = 0.0055555557
+offset_left = 64.0
 offset_top = 131.0
 offset_right = 320.0
 offset_bottom = 179.0
 theme = ExtResource("2_0pyuc")
-text = "asdm"
+text = "Wag mong masyadong itaas ang pag-aani ha."
 autowrap_mode = 2
 visible_characters_behavior = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Icon" type="Sprite2D" parent="CanvasLayer/DialogBox" unique_id=1740944824]
-position = Vector2(32, 148)
-scale = Vector2(0.5, 0.5)
+position = Vector2(24, 156)
+texture = ExtResource("3_f1e5s")
 
 [node name="BlackAnim" type="AnimationPlayer" parent="CanvasLayer" unique_id=1164434273]
 libraries/ = SubResource("AnimationLibrary_qdbl6")

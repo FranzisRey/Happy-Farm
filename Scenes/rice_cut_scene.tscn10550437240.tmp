@@ -1,0 +1,225 @@
+[gd_scene format=3 uid="uid://cpln4nhvoqwpp"]
+
+[ext_resource type="Script" uid="uid://4gqx6pijjw2p" path="res://Scripts/cameraZoomResetter.gd" id="1_g5aql"]
+[ext_resource type="Script" uid="uid://c1xqk654m5bab" path="res://Scripts/rice_cut_manager.gd" id="1_k22yq"]
+[ext_resource type="Shader" uid="uid://0dobemnptju3" path="res://Shaders/rice_cut_shader.gdshader" id="2_3y2gg"]
+[ext_resource type="PackedScene" uid="uid://bcb0g85qgqnnb" path="res://Scenes/Rice crop.tscn" id="3_euuvj"]
+[ext_resource type="Script" uid="uid://bgfig2w71hbar" path="res://Scripts/mouse_manager_mango.gd" id="5_7e167"]
+[ext_resource type="Script" uid="uid://thqru8iwe0f2" path="res://Scripts/Storyish based scripts/rice_cut_story_stage_4.gd" id="6_3y2gg"]
+[ext_resource type="Texture2D" uid="uid://ce1tujktuyqf7" path="res://Sprites/dotted lines.png" id="7_uveq3"]
+[ext_resource type="Script" uid="uid://b8e7a3hf4v22g" path="res://Scripts/brocken_line_move.gd" id="8_jvxu6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g5aql"]
+shader = ExtResource("2_3y2gg")
+shader_parameter/slope = 0.0
+shader_parameter/offset = 32.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3y2gg"]
+shader = ExtResource("2_3y2gg")
+shader_parameter/slope = 0.0
+shader_parameter/offset = 32.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uveq3"]
+shader = ExtResource("2_3y2gg")
+shader_parameter/slope = 0.0
+shader_parameter/offset = 32.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jvxu6"]
+shader = ExtResource("2_3y2gg")
+shader_parameter/slope = 0.0
+shader_parameter/offset = 32.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7e167"]
+shader = ExtResource("2_3y2gg")
+shader_parameter/slope = 0.0
+shader_parameter/offset = 32.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3t7vw"]
+shader = ExtResource("2_3y2gg")
+shader_parameter/slope = 0.0
+shader_parameter/offset = 32.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uhc26"]
+shader = ExtResource("2_3y2gg")
+shader_parameter/slope = 0.0
+shader_parameter/offset = 32.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ki4j"]
+shader = ExtResource("2_3y2gg")
+shader_parameter/slope = 0.0
+shader_parameter/offset = 32.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j0yb4"]
+shader = ExtResource("2_3y2gg")
+shader_parameter/slope = 0.0
+shader_parameter/offset = 32.0
+
+[sub_resource type="Curve" id="Curve_jvxu6"]
+_limits = [0.0, 2.0, 0.0, 0.9971988]
+_data = [Vector2(0, 1.0340557), 0.0, 0.0, 0, 0, Vector2(0.09776459, 2), -4.802928, -4.802928, 0, 0, Vector2(0.9971988, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Animation" id="Animation_g5aql"]
+resource_name = "Next Row"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rice field:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.26, 0.5),
+"transitions": PackedFloat32Array(2, 2, 2, 2),
+"update": 0,
+"values": [Vector2(-128, 16), Vector2(-128, 32), Vector2(-128, 8), Vector2(-128, 16)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rice field:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(2, 2, 2),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3y2gg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rice field:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-128, 16)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rice field:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uveq3"]
+_data = {
+&"Next Row": SubResource("Animation_g5aql"),
+&"RESET": SubResource("Animation_3y2gg")
+}
+
+[node name="rice cut  Scene" type="Node2D" unique_id=373161630]
+script = ExtResource("1_k22yq")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=863084310]
+layer = 0
+follow_viewport_enabled = true
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1971549662]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -160.0
+offset_top = -90.0
+offset_right = -160.0
+offset_bottom = -90.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer/Control" unique_id=1267152435]
+visible = false
+layout_mode = 0
+offset_left = 6.0
+offset_top = 3.0
+offset_right = 51.0
+offset_bottom = 26.0
+text = "00:00"
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=465861544]
+position = Vector2(14, 10)
+color = Color(0.4606069, 0.8293162, 0.99088544, 1)
+polygon = PackedVector2Array(-179, 14, 174, 14, 170, 121, -187, 126)
+
+[node name="Camera" type="Camera2D" parent="." unique_id=815973580]
+zoom = Vector2(4, 4)
+script = ExtResource("1_g5aql")
+
+[node name="Rice field" type="Node2D" parent="." unique_id=778509597]
+position = Vector2(-128, 16)
+
+[node name="Rice crop 1" parent="Rice field" unique_id=1199876418 instance=ExtResource("3_euuvj")]
+material = SubResource("ShaderMaterial_g5aql")
+
+[node name="Rice crop 2" parent="Rice field" unique_id=1349931400 instance=ExtResource("3_euuvj")]
+material = SubResource("ShaderMaterial_3y2gg")
+position = Vector2(32, 0)
+
+[node name="Rice crop 3" parent="Rice field" unique_id=1741565790 instance=ExtResource("3_euuvj")]
+material = SubResource("ShaderMaterial_uveq3")
+position = Vector2(65, 0)
+
+[node name="Rice crop 4" parent="Rice field" unique_id=997306203 instance=ExtResource("3_euuvj")]
+material = SubResource("ShaderMaterial_jvxu6")
+position = Vector2(97, 0)
+
+[node name="Rice crop 5" parent="Rice field" unique_id=89362020 instance=ExtResource("3_euuvj")]
+material = SubResource("ShaderMaterial_7e167")
+position = Vector2(128, 0)
+
+[node name="Rice crop 6" parent="Rice field" unique_id=343247909 instance=ExtResource("3_euuvj")]
+material = SubResource("ShaderMaterial_3t7vw")
+position = Vector2(160, 0)
+
+[node name="Rice crop 7" parent="Rice field" unique_id=818201561 instance=ExtResource("3_euuvj")]
+material = SubResource("ShaderMaterial_uhc26")
+position = Vector2(193, 0)
+
+[node name="Rice crop 8" parent="Rice field" unique_id=558165593 instance=ExtResource("3_euuvj")]
+material = SubResource("ShaderMaterial_0ki4j")
+position = Vector2(225, 0)
+
+[node name="Rice crop 9" parent="Rice field" unique_id=855930820 instance=ExtResource("3_euuvj")]
+material = SubResource("ShaderMaterial_j0yb4")
+position = Vector2(256, 0)
+
+[node name="Mouse Manager" type="Node2D" parent="." unique_id=2040694741]
+script = ExtResource("5_7e167")
+
+[node name="Line" type="Line2D" parent="Mouse Manager" unique_id=1398975701]
+z_index = 2
+points = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+width = 1.0
+width_curve = SubResource("Curve_jvxu6")
+
+[node name="NextRowAnim" type="AnimationPlayer" parent="." unique_id=1395002058]
+libraries/ = SubResource("AnimationLibrary_uveq3")
+
+[node name="StoryStage4" type="Node2D" parent="." unique_id=380181735]
+script = ExtResource("6_3y2gg")
+
+[node name="brocken line" type="Sprite2D" parent="." unique_id=637209075]
+texture_repeat = 2
+position = Vector2(0, 28)
+texture = ExtResource("7_uveq3")
+offset = Vector2(0, -0.5)
+region_enabled = true
+region_rect = Rect2(0, 10, 512, 1)
+script = ExtResource("8_jvxu6")
+
+[node name="OneSecond Timer" type="Timer" parent="." unique_id=1412994815]
+
+[node name="CutTimer" type="Timer" parent="." unique_id=1464534969]
+wait_time = 0.2
+one_shot = true
+
+[node name="NextRowTimer" type="Timer" parent="." unique_id=707879510]

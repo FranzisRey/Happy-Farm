@@ -44,7 +44,7 @@ func _process(delta):
 				dialogue += 1
 				match dialogue:
 					2:
-						GameManager.SetDialog("Pero handa na naman ang tanghalian, sumabay ka nalang sa amin.", true, 1, "", 3)
+						GameManager.SetDialog("Pero handa na naman ang tanghalian, sumabay ka nalang sa amin.", true, 1, "", 3) # sis 1
 					3:
 						dialWait = false
 						GameManager.SetDialog()
@@ -52,31 +52,31 @@ func _process(delta):
 						await get_tree().create_timer(2).timeout
 						GameManager.PlayBlackAnim(1)
 						await get_tree().create_timer(1).timeout
-						GameManager.SetDialog("Anak, salamat at dumating ka para matulongan kami, pasensya na lang sa abala.", true, 0, "", 4)
+						GameManager.SetDialog("Anak, salamat at dumating ka para matulongan kami, pasensya na lang sa abala.", true, 1, GameManager._2_dad_confused_nohat, 4) # dad 2
 						dialWait = true
 					4:
-						GameManager.SetDialog("Wala po yan 'tay, hindi naman po kayo malayo sa aking trabaho.", true, 0, "", 2)
+						GameManager.SetDialog("Wala po yan 'tay, hindi naman po kayo malayo sa aking trabaho.", true, 1, GameManager._1_player_calm_nohat, 2) # player 1
 					5:
-						GameManager.SetDialog("Pati nakakainip rin sa Bahay minsan, maganda nga po at nakakagawa rin naman ang katawan dine.", true, 0, "", 2)
+						GameManager.SetDialog("Pati nakakainip rin sa Bahay minsan, maganda nga po at nakakagawa rin naman ang katawan dine.", true, 1, GameManager._1_player_calm_nohat, 2) # player 1
 					6:
-						GameManager.SetDialog("Sige anak. Para magsimula tayo, ngayong hapon na ito, tuturuan ko ikaw sa palay namin, ulit.", true, 0, "", 4)
+						GameManager.SetDialog("Sige anak. Para magsimula tayo, ngayong hapon na ito, tuturuan ko ikaw sa palay namin, ulit.", true, 1, GameManager._1_dad_calm_nohat, 4) # dad 1
 					7:
 						dialWait = false
-						GameManager.SetDialog("'tay, siguro alam ko pa nama-", true, 0, "", 3)
+						GameManager.SetDialog("'tay, siguro alam ko pa nama-", true, 1, GameManager._2_player_confused_nohat, 3) # player 2
 						await GameManager.TextIsFinsihed
 						await get_tree().create_timer(.1).timeout
-						GameManager.SetDialog("Ala 'tay, baka maiyamot si kuya at biglang iitim ang balat!", true, 0, "", 2)
+						GameManager.SetDialog("Ay tay kita nyo ba po? Kaputi-puti na ni kuya baka matakot siya sa araw!", true, 1, GameManager._6_sister_joyful_nohat, 2) # sis 6
 						dialWait = true
 					8:
-						GameManager.SetDialog("Aa ka Ellia, ilang taon na ang nakalipas ganyan ka pa rin sa akin.", true, 0, "", 2)
+						GameManager.SetDialog("Aa ka Ellia, ilang taon na ang nakalipas ganyan ka pa rin sa akin.", true, 1, GameManager._4_player_annoyed_nohat, 2) # player 4
 					9:
-						GameManager.SetDialog("Eh paano ga, kalalaki mong tao ay ikaw pa ang maarte sa mga gawaing noong bata pa tayo.", true, 0, "", 3)
+						GameManager.SetDialog("Eh paano ga, kalalaki mong tao ay ikaw pa ang maarte sa mga gawaing noong bata pa tayo.", true, 1, GameManager._6_sister_joyful_nohat, 3) # sis 6
 					10:
-						GameManager.SetDialog("O tama na kayong dalawa, dahil dyan kayo ang magtutulungan ngayon sa palay.", true, 0, "", 4)
+						GameManager.SetDialog("O tama na kayong dalawa, dahil dyan kayo ang magtutulungan ngayon sa palay.", true, 1, GameManager._3_dad_angry_nohat, 4) # dad 3
 					11:
-						GameManager.SetDialog("Marunong ka na rin Ellia, ikaw na ang magturo sa kapatid mo dun sa pag-refine ng bigas.", true, 0, "", 4)
+						GameManager.SetDialog("Marunong ka na rin Ellia, ikaw na ang magturo sa kapatid mo dun sa pag-refine ng bigas.", true, 1, GameManager._3_dad_angry_nohat, 4) # dad 3
 					12:
-						GameManager.SetDialog("haha nadamay ka rin.", true, 0, "", 2)
+						GameManager.SetDialog("haha nadamay ka rin.", true, 1, GameManager._6_player_joyful_nohat, 2) # player 6
 					13:
 						dialWait = false
 						GameManager.SetDialog()
@@ -142,5 +142,5 @@ func _on_sit_down_button_down():
 	GameManager.PlayBlackAnim(1)
 	await get_tree().create_timer(.08).timeout
 	dialogue = 1
-	GameManager.SetDialog("Tanghali ka na, naubosan ka ng almusal kuya.", true, 0, "", 3)
+	GameManager.SetDialog("Tanghali ka na, naubosan ka ng almusal kuya.", true, 1, GameManager._3_sister_angry_nohat, 3) # sister 1
 	pass # Replace with function body.

@@ -21,7 +21,7 @@ func _ready():
 		HousePart = 1
 		player.canMove = false
 		dialogueStage = 1
-		GameManager.SetDialog("Z ZzZZ zZZzZZ Z............", true, 0, "", 6)
+		GameManager.SetDialog("Z ZzZZ zZZzZZ Z............", true, 0, "", 6) # player
 	elif GameManager.StoryStage == 2:
 		HousePart = 1
 		GameManager.PlayBlackAnim(1)
@@ -40,7 +40,7 @@ func _process(delta):
 				dialogueStage += 1
 				match(dialogueStage):
 					2:
-						GameManager.SetDialog("............", true, 0, "", 6)
+						GameManager.SetDialog("............", true, 0, "", 6) # player
 					
 					
 					3:
@@ -49,16 +49,16 @@ func _process(delta):
 						await get_tree().create_timer(2).timeout
 						GameManager.PlayBlackAnim(1)
 						await get_tree().create_timer(1).timeout
-						GameManager.SetDialog("Bago nanamang araw.", true, 0, "", 6)
+						GameManager.SetDialog("Bago nanamang araw.", true, 1, GameManager._1_player_calm_nohat, 6) # player 1
 						dialWait = true
 						
 					4:
-						GameManager.SetDialog("Gabi na and dating ko dito, pero nasa akin naman kung bakit.", true, 0, "", 3)
+						GameManager.SetDialog("Gabi na and dating ko dito, pero nasa akin naman kung bakit.", true, 1, GameManager._1_player_calm_nohat, 3) # player 1
 					5:
-						GameManager.SetDialog("Siguro nagtatanghalian na sila.", true, 0, "", 3)
+						GameManager.SetDialog("Siguro nagtatanghalian na sila.", true, 1, GameManager._1_player_calm_nohat, 3) # player 1
 					6:
 						dialogueStage = -1
-						GameManager.SetDialog("", false, 0, "", -1)
+						GameManager.SetDialog()
 						player.canMove = true
 						GameManager.InCutscene = false
 						GameManager.StoryStage = 2

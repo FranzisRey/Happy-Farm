@@ -370,6 +370,7 @@ sprite_frames = SubResource("SpriteFrames_yv62b")
 animation = &"Down"
 
 [node name="Hat" type="AnimatedSprite2D" parent="." unique_id=2024674257]
+visible = false
 sprite_frames = SubResource("SpriteFrames_tbv2v")
 animation = &"Down"
 

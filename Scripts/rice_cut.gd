@@ -4,6 +4,7 @@ var GotCut = 0
 var CutRank = 0
 @onready var mouse_manager = $"../../Mouse Manager"
 @onready var rice_cut_scene = $"../.."
+@onready var cut_particle = $CutParticle
 var texture
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,6 +27,9 @@ func Reset():
 		GotCut = 0
 		material.set("shader_parameter/offset", 32)
 		material.set("shader_parameter/slope", 0)
+		material.set("shader_parameter/colorThing", Color.WHITE)
+		material.set("shader_parameter/strength", 1)
+		material.set("shader_parameter/isGray", false)
 func Cut():
 	var CutPoints = mouse_manager.CutPoints
 	if !is_nan(CutPoints[1][0]) && !GotCut:
@@ -36,10 +40,34 @@ func Cut():
 			var _offset = ((minV+maxV)/2)
 			
 			var new_offset = -_offset.y+global_position.y-slope*(_offset.x-global_position.x)+(texture.get_height()/2)
-			if new_offset < 32 && new_offset > 0:
+			if new_offset < 32 && new_offset > 1:
 				material.set("shader_parameter/offset", (new_offset))
 				material.set("shader_parameter/slope", -slope* (-1 + (2*int(flip_h))))
-				rice_cut_scene.CutTotalRank += ceili((min(abs(1/slope),10) + min(abs(80/(4-new_offset)), 40)) / 10)
+				
+				
+				print(slope)
+				#rice_cut_scene.CutTotalRank += round(min(abs(2.5/slope),10) / 10)
+				#rice_cut_scene.CutTotalRank += ceili(max((-(1.1*abs(4-new_offset)) ** 1.2) + 4, 0))
+				#print(ceili(max((-(.8*abs(4-new_offset)) ** 1.2) + 4, 0)) +  round(min(abs(2.5/slope),10) / 10))
+				#print(slope, " " ,new_offset)
+				var thisCutRank = round(min(abs(2.5/slope),10) / 10) + ceili(max((-(1.1*abs(4-new_offset)) ** 1.2) + 4, 0))
+				rice_cut_scene.CutTotalRank += thisCutRank
+				if thisCutRank >= 5:
+					material.set("shader_parameter/colorThing", Color.YELLOW)
+					material.set("shader_parameter/strength", 1.5)
+				elif thisCutRank >= 4:
+					material.set("shader_parameter/isGray", true)
+					material.set("shader_parameter/strength", 1.7)
+				elif thisCutRank >= 2:
+					material.set("shader_parameter/colorThing", Color.BROWN)
+					material.set("shader_parameter/strength", 3.0)
+				elif thisCutRank >= 0:
+					material.set("shader_parameter/colorThing", Color.DARK_SLATE_GRAY)
+					
+				
 				GotCut = 1
+				rice_cut_scene.isCutStart = true
+				cut_particle.position.y = -new_offset + 16
+				cut_particle.emitting = true
 	elif is_nan(CutPoints[1][0]):
 		pass
