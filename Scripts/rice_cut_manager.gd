@@ -10,7 +10,7 @@ var canCut = false # if can start cut
 var isCutStart = false # if the cutting is started
 var cutIsDone = false # if the cutting is done
 var time = 0
-var maxRow = 1
+var maxRow = 9
 
 @onready var one_second_timer = $"OneSecond Timer"
 @onready var next_row_anim = $NextRowAnim
@@ -45,11 +45,11 @@ func _process(delta):
 			if !cutIsDone:
 
 				print("Final Score: %d/405" % [CutTotalRank])
-				var cropNumRank = min(ceil((float(CutTotalRank)-250) / 25) + 1, 6)
+				var cropNumRank = max(min(ceil((float(CutTotalRank)-250) / 25) + 1, 6), 1)
 
-				var timerNumRank = 6 - ceil((float(time)-60) / 30)
+				var timerNumRank = min(6 - ceil((float(time)-60) / 30), 6)
 				GameManager.rice_cut_rank = cropNumRank - (6-timerNumRank)
-				
+				GameManager.StoryStage = 5
 				print(cropNumRank, " ", timerNumRank)
 				
 			canCut = false

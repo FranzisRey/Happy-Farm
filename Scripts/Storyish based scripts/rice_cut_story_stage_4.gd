@@ -5,9 +5,10 @@ var diaStage = -1
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if GameManager.StoryStage == 4:
+		await get_tree().create_timer(1).timeout
 		diaStage = 1
-		await get_tree().create_timer(.25).timeout
 		GameManager.InCutscene = true
+		$Label.visible = true
 		GameManager.SetDialog("Wag mong masyadong itaas ang pag-aani ha.", true, 0, "", 3)
 	pass # Replace with function body.
 
@@ -23,6 +24,7 @@ func _process(delta):
 				3:
 					GameManager.SetDialog("Tinutulungan na nga at lahat >:(", true, 0, "", 3)
 				4:
+					$Label.visible = false
 					GameManager.InCutscene = false
 					diaStage = -1
 					GameManager.SetDialog()

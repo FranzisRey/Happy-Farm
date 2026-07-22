@@ -243,6 +243,14 @@ libraries/ = SubResource("AnimationLibrary_uveq3")
 [node name="StoryStage4" type="Node2D" parent="." unique_id=380181735]
 script = ExtResource("6_3y2gg")
 
+[node name="Label" type="Label" parent="StoryStage4" unique_id=44329569]
+visible = false
+offset_left = -47.0
+offset_top = -39.0
+offset_right = 47.0
+offset_bottom = -16.0
+text = "How to do it"
+
 [node name="brocken line" type="Sprite2D" parent="." unique_id=637209075]
 texture_repeat = 2
 position = Vector2(0, 28)

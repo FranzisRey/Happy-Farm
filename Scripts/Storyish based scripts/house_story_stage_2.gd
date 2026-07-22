@@ -44,15 +44,19 @@ func _process(delta):
 				dialogue += 1
 				match dialogue:
 					2:
-						GameManager.SetDialog("Pero handa na naman ang tanghalian, sumabay ka nalang sa amin.", true, 1, "", 3) # sis 1
+						GameManager.SetDialog("Pero handa na naman ang tanghalian, sumabay ka na lang sa amin.", true, 1, GameManager._1_sister_calm_nohat, 3) # sis 1
 					3:
+						sister.hat.play("Down")
+						sister.body.play("Down")
+						sister.arm.play("Down")
+						await get_tree().create_timer(.1).timeout
 						dialWait = false
 						GameManager.SetDialog()
 						GameManager.PlayBlackAnim(0)
 						await get_tree().create_timer(2).timeout
 						GameManager.PlayBlackAnim(1)
 						await get_tree().create_timer(1).timeout
-						GameManager.SetDialog("Anak, salamat at dumating ka para matulongan kami, pasensya na lang sa abala.", true, 1, GameManager._2_dad_confused_nohat, 4) # dad 2
+						GameManager.SetDialog("Anak, salamat at dumating ka para matulungan kami, pasensya na lang sa abala.", true, 1, GameManager._2_dad_confused_nohat, 4) # dad 2
 						dialWait = true
 					4:
 						GameManager.SetDialog("Wala po yan 'tay, hindi naman po kayo malayo sa aking trabaho.", true, 1, GameManager._1_player_calm_nohat, 2) # player 1
@@ -68,8 +72,14 @@ func _process(delta):
 						GameManager.SetDialog("Ay tay kita nyo ba po? Kaputi-puti na ni kuya baka matakot siya sa araw!", true, 1, GameManager._6_sister_joyful_nohat, 2) # sis 6
 						dialWait = true
 					8:
-						GameManager.SetDialog("Aa ka Ellia, ilang taon na ang nakalipas ganyan ka pa rin sa akin.", true, 1, GameManager._4_player_annoyed_nohat, 2) # player 4
+						player.hatSprite.play("Right")
+						player.bodySprite.play("Right")
+						player.armSprite.play("Right")
+						GameManager.SetDialog("Hala ka Ellia, ilang taon na ang nakalipas ganyan ka pa rin sa akin.", true, 1, GameManager._4_player_annoyed_nohat, 2) # player 4
 					9:
+						player.hatSprite.play("Down")
+						player.bodySprite.play("Down")
+						player.armSprite.play("Down")
 						GameManager.SetDialog("Eh paano ga, kalalaki mong tao ay ikaw pa ang maarte sa mga gawaing noong bata pa tayo.", true, 1, GameManager._6_sister_joyful_nohat, 3) # sis 6
 					10:
 						GameManager.SetDialog("O tama na kayong dalawa, dahil dyan kayo ang magtutulungan ngayon sa palay.", true, 1, GameManager._3_dad_angry_nohat, 4) # dad 3
@@ -140,7 +150,10 @@ func _on_sit_down_button_down():
 	player.armSprite.play("Down")
 	await get_tree().create_timer(.5).timeout
 	GameManager.PlayBlackAnim(1)
-	await get_tree().create_timer(.08).timeout
+	await get_tree().create_timer(1).timeout
 	dialogue = 1
-	GameManager.SetDialog("Tanghali ka na, naubosan ka ng almusal kuya.", true, 1, GameManager._3_sister_angry_nohat, 3) # sister 1
+	GameManager.SetDialog("Tanghali ka na, naubosan ka ng almusal kuya.", true, 1, GameManager._1_sister_calm_nohat, 3) # sister 1
+	sister.hat.play("Left")
+	sister.body.play("Left")
+	sister.arm.play("Left")
 	pass # Replace with function body.

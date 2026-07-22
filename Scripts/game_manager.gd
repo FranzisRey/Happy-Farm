@@ -45,16 +45,16 @@ const _8_player_stupidface = "res://Sprites/Player png faces/8Player_stupidface.
 #sister faces
 const _1_sister_calm_nohat = "res://Sprites/Sister png faces/1SisterEllia_Calm(nohat).png"
 const _1_sister_calm = "res://Sprites/Sister png faces/1SisterEllia_Calm.png"
-const _2_sister_confused = "res://Sprites/Sister png faces/2SisterEllia_Confused.png"
 const _2_sister_confused_nohat = "res://Sprites/Sister png faces/2SisterEllia_Confusednohat).png"
+const _3_sister_angry_nohat = "res://Sprites/Sister png faces/3SisterEllia_Angry(nohat).png"
+const _2_sister_confused = "res://Sprites/Sister png faces/2SisterEllia_Confused.png"
 const _3_sister_angry = "res://Sprites/Sister png faces/3SisterEllia_Angry.png"
-const _3_sister_angry_nohat = "res://Sprites/Sister png faces/3SisterEllia_Angrynohat).png"
+const _4_sister_annoyed_nohat = "res://Sprites/Sister png faces/4SisterEllia_Annoyed(nohat).png"
 const _4_sister_annoyed = "res://Sprites/Sister png faces/4SisterEllia_Annoyed.png"
-const _4_sister_annoyed_nohat = "res://Sprites/Sister png faces/4SisterEllia_Annoyednohat).png"
 const _5_sister_sad_nohat = "res://Sprites/Sister png faces/5SisterEllia_Sad(nohat).png"
 const _5_sister_sad = "res://Sprites/Sister png faces/5SisterEllia_Sad.png"
+const _6_sister_joyful_nohat = "res://Sprites/Sister png faces/6SisterEllia_Joyful(nohat).png"
 const _6_sister_joyful = "res://Sprites/Sister png faces/6SisterEllia_Joyful.png"
-const _6_sister_joyful_nohat = "res://Sprites/Sister png faces/6SisterEllia_Joyfulnohat).png"
 const _7_sister_smug_nohat = "res://Sprites/Sister png faces/7SisterEllia_Smug(nohat).png"
 const _7_sister_smug = "res://Sprites/Sister png faces/7SisterEllia_Smug.png"
 # dad faces
@@ -79,6 +79,15 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	if Input.is_action_just_pressed("F11") && get_window().mode == Window.MODE_FULLSCREEN:
 		get_window().mode = Window.MODE_WINDOWED
 	elif Input.is_action_just_pressed("F11"):
