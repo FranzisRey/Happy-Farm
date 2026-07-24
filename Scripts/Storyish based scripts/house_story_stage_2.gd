@@ -49,6 +49,7 @@ func _process(delta):
 						sister.hat.play("Down")
 						sister.body.play("Down")
 						sister.arm.play("Down")
+						GameManager.SetDialog()
 						await get_tree().create_timer(.5).timeout
 						dialWait = false
 						GameManager.SetDialog()
