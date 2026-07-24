@@ -2,30 +2,13 @@
 
 [ext_resource type="Script" uid="uid://4gqx6pijjw2p" path="res://Scripts/cameraZoomResetter.gd" id="1_g5aql"]
 [ext_resource type="Script" uid="uid://c1xqk654m5bab" path="res://Scripts/rice_cut_manager.gd" id="1_k22yq"]
+[ext_resource type="Texture2D" uid="uid://dlmfka2aqp6f7" path="res://Sprites/Ricefieldgamebg.png" id="3_7e167"]
 [ext_resource type="PackedScene" uid="uid://bcb0g85qgqnnb" path="res://Scenes/Rice crop.tscn" id="3_euuvj"]
 [ext_resource type="Shader" uid="uid://0dobemnptju3" path="res://Shaders/rice_cut_shader.gdshader" id="4_jvxu6"]
 [ext_resource type="Script" uid="uid://bgfig2w71hbar" path="res://Scripts/mouse_manager_mango.gd" id="5_7e167"]
 [ext_resource type="Script" uid="uid://thqru8iwe0f2" path="res://Scripts/Storyish based scripts/rice_cut_story_stage_4.gd" id="6_3y2gg"]
 [ext_resource type="Texture2D" uid="uid://ce1tujktuyqf7" path="res://Sprites/dotted lines.png" id="7_uveq3"]
 [ext_resource type="Script" uid="uid://b8e7a3hf4v22g" path="res://Scripts/brocken_line_move.gd" id="8_jvxu6"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jvxu6"]
-resource_local_to_scene = true
-shader = ExtResource("4_jvxu6")
-shader_parameter/slope = 0.0
-shader_parameter/offset = 32.0
-shader_parameter/colorThing = Color(1, 1, 1, 1)
-shader_parameter/strength = 1.0
-shader_parameter/isGray = false
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7e167"]
-resource_local_to_scene = true
-shader = ExtResource("4_jvxu6")
-shader_parameter/slope = 0.0
-shader_parameter/offset = 32.0
-shader_parameter/colorThing = Color(1, 1, 1, 1)
-shader_parameter/strength = 1.0
-shader_parameter/isGray = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3t7vw"]
 resource_local_to_scene = true
@@ -82,6 +65,24 @@ shader_parameter/strength = 1.0
 shader_parameter/isGray = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_20wo5"]
+resource_local_to_scene = true
+shader = ExtResource("4_jvxu6")
+shader_parameter/slope = 0.0
+shader_parameter/offset = 32.0
+shader_parameter/colorThing = Color(1, 1, 1, 1)
+shader_parameter/strength = 1.0
+shader_parameter/isGray = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7t2s6"]
+resource_local_to_scene = true
+shader = ExtResource("4_jvxu6")
+shader_parameter/slope = 0.0
+shader_parameter/offset = 32.0
+shader_parameter/colorThing = Color(1, 1, 1, 1)
+shader_parameter/strength = 1.0
+shader_parameter/isGray = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d3ftn"]
 resource_local_to_scene = true
 shader = ExtResource("4_jvxu6")
 shader_parameter/slope = 0.0
@@ -157,6 +158,7 @@ _data = {
 }
 
 [node name="rice cut  Scene" type="Node2D" unique_id=373161630]
+process_mode = 1
 script = ExtResource("1_k22yq")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=863084310]
@@ -181,54 +183,64 @@ offset_right = 51.0
 offset_bottom = 26.0
 text = "00:00"
 
-[node name="Polygon2D" type="Polygon2D" parent="." unique_id=465861544]
-position = Vector2(14, 10)
-color = Color(0.4606069, 0.8293162, 0.99088544, 1)
-polygon = PackedVector2Array(-179, 14, 174, 14, 170, 121, -187, 126)
-
 [node name="Camera" type="Camera2D" parent="." unique_id=815973580]
 zoom = Vector2(4, 4)
 script = ExtResource("1_g5aql")
+
+[node name="BG" type="Sprite2D" parent="." unique_id=1936876060]
+texture = ExtResource("3_7e167")
+vframes = 3
+
+[node name="WATER" type="Sprite2D" parent="." unique_id=747902110]
+texture = ExtResource("3_7e167")
+vframes = 3
+frame = 1
+
+[node name="RICE" type="Sprite2D" parent="." unique_id=804855118]
+texture = ExtResource("3_7e167")
+vframes = 3
+frame = 2
 
 [node name="Rice field" type="Node2D" parent="." unique_id=778509597]
 position = Vector2(-128, 16)
 
 [node name="Rice crop 1" parent="Rice field" unique_id=1199876418 instance=ExtResource("3_euuvj")]
-material = SubResource("ShaderMaterial_jvxu6")
+material = SubResource("ShaderMaterial_3t7vw")
 
 [node name="Rice crop 2" parent="Rice field" unique_id=1349931400 instance=ExtResource("3_euuvj")]
-material = SubResource("ShaderMaterial_7e167")
+material = SubResource("ShaderMaterial_uhc26")
 position = Vector2(32, 0)
 
 [node name="Rice crop 3" parent="Rice field" unique_id=1741565790 instance=ExtResource("3_euuvj")]
-material = SubResource("ShaderMaterial_3t7vw")
+material = SubResource("ShaderMaterial_0ki4j")
 position = Vector2(65, 0)
 
 [node name="Rice crop 4" parent="Rice field" unique_id=997306203 instance=ExtResource("3_euuvj")]
-material = SubResource("ShaderMaterial_uhc26")
+material = SubResource("ShaderMaterial_j0yb4")
 position = Vector2(97, 0)
 
 [node name="Rice crop 5" parent="Rice field" unique_id=89362020 instance=ExtResource("3_euuvj")]
-material = SubResource("ShaderMaterial_0ki4j")
+material = SubResource("ShaderMaterial_a03kw")
 position = Vector2(128, 0)
 
 [node name="Rice crop 6" parent="Rice field" unique_id=343247909 instance=ExtResource("3_euuvj")]
-material = SubResource("ShaderMaterial_j0yb4")
+material = SubResource("ShaderMaterial_u06vv")
 position = Vector2(160, 0)
 
 [node name="Rice crop 7" parent="Rice field" unique_id=818201561 instance=ExtResource("3_euuvj")]
-material = SubResource("ShaderMaterial_a03kw")
+material = SubResource("ShaderMaterial_20wo5")
 position = Vector2(193, 0)
 
 [node name="Rice crop 8" parent="Rice field" unique_id=558165593 instance=ExtResource("3_euuvj")]
-material = SubResource("ShaderMaterial_u06vv")
+material = SubResource("ShaderMaterial_7t2s6")
 position = Vector2(225, 0)
 
 [node name="Rice crop 9" parent="Rice field" unique_id=855930820 instance=ExtResource("3_euuvj")]
-material = SubResource("ShaderMaterial_20wo5")
+material = SubResource("ShaderMaterial_d3ftn")
 position = Vector2(256, 0)
 
 [node name="Mouse Manager" type="Node2D" parent="." unique_id=2040694741]
+process_mode = 3
 script = ExtResource("5_7e167")
 
 [node name="Line" type="Line2D" parent="Mouse Manager" unique_id=1398975701]
@@ -267,3 +279,7 @@ wait_time = 0.2
 one_shot = true
 
 [node name="NextRowTimer" type="Timer" parent="." unique_id=707879510]
+
+[node name="NextRowWaitToReset" type="Timer" parent="." unique_id=984868035]
+wait_time = 0.25
+one_shot = true

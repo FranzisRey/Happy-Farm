@@ -58,6 +58,7 @@ _data = {
 }
 
 [node name="Game Manager" type="Node2D" unique_id=381041790]
+process_mode = 3
 script = ExtResource("1_1qqqt")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=384994853]
@@ -66,6 +67,10 @@ script = ExtResource("1_1qqqt")
 position = Vector2(20, 0)
 color = Color(0, 0, 0, 0)
 polygon = PackedVector2Array(-780, -667, 2000, -658, 1798, 1520, -1185, 1419)
+
+[node name="BlackAnim" type="AnimationPlayer" parent="CanvasLayer" unique_id=1164434273]
+process_mode = 1
+libraries/ = SubResource("AnimationLibrary_qdbl6")
 
 [node name="DialogBox" type="Control" parent="CanvasLayer" unique_id=278453761]
 visible = false
@@ -95,8 +100,11 @@ metadata/_edit_use_anchors_ = true
 position = Vector2(24, 156)
 texture = ExtResource("3_f1e5s")
 
-[node name="BlackAnim" type="AnimationPlayer" parent="CanvasLayer" unique_id=1164434273]
-libraries/ = SubResource("AnimationLibrary_qdbl6")
+[node name="PauseThing" type="Label" parent="CanvasLayer" unique_id=1792875111]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Pause"
 
 [node name="SaveLoadManager" type="Node2D" parent="." unique_id=2075631933]
 script = ExtResource("4_f1e5s")

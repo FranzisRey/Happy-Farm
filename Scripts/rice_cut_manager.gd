@@ -16,6 +16,7 @@ var maxRow = 9
 @onready var next_row_anim = $NextRowAnim
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	one_second_timer.timeout.connect(TimeGoUp)
 	rice_crop = preload("res://Scenes/Rice crop.tscn")
 	canCut = true
@@ -43,7 +44,7 @@ func _process(delta):
 			Row += 1
 		elif !next_row_anim.is_playing():
 			if !cutIsDone:
-
+				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 				print("Final Score: %d/405" % [CutTotalRank])
 				var cropNumRank = max(min(ceil((float(CutTotalRank)-250) / 25) + 1, 6), 1)
 
@@ -57,7 +58,9 @@ func _process(delta):
 			
 		if Row <= maxRow:
 			next_row_anim.play("Next Row")
-			await get_tree().create_timer(.25).timeout
+			if $NextRowWaitToReset.is_stopped():
+				$NextRowWaitToReset.start()
+			await $NextRowWaitToReset.timeout
 			reset.emit()
 			
 func TimeGoUp():

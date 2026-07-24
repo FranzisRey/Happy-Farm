@@ -18,6 +18,7 @@ var TextShowSpeed = 1
 signal TextIsFinsihed
 var ifFadedIn = true
 var MinTimeLoadStart: bool = false
+var isPaused = false
 
 
 
@@ -79,7 +80,16 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
+	if Input.is_action_just_pressed("ESC") && !isPaused && !get_tree().get_first_node_in_group("Cant Pause"):
+		$CanvasLayer/PauseThing.visible = true
+		print("pause")
+		isPaused = true
+		get_tree().paused = true
+	elif Input.is_action_just_pressed("ESC") && isPaused:
+		$CanvasLayer/PauseThing.visible = false
+		print("nah")
+		isPaused = false
+		get_tree().paused = false
 	
 	
 	
@@ -93,7 +103,7 @@ func _process(delta):
 	elif Input.is_action_just_pressed("F11"):
 		get_window().mode = Window.MODE_FULLSCREEN
 	
-	if TextSlowShowing && InCutscene:
+	if TextSlowShowing && InCutscene && !get_tree().paused:
 		if $WhenComma.is_stopped():
 			TextShowingTime += 1
 		if TextShowingTime >= TextShowSpeed:

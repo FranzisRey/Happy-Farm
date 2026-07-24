@@ -5,19 +5,25 @@ var ifMouseIsDown = false
 var CutPoints = [Vector2(NAN,NAN),Vector2(NAN,NAN)]
 var cutAction = false
 var mouseHeld = false
+var gotPaused = false
 signal finished
 @onready var rice_cut_scene = $".."
 
 @onready var cut_timer = $"../CutTimer"
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
-	if(Input.is_action_pressed("LMB")) && rice_cut_scene.canCut && !GameManager.InCutscene:
+	
+	
+	
+	if(Input.is_action_pressed("LMB")) && rice_cut_scene.canCut && !GameManager.InCutscene && !get_tree().paused:
+		
 		if(!cutAction && !mouseHeld):
 			CutPoints[0] = get_global_mouse_position()
 			cut_timer.start()
@@ -48,14 +54,22 @@ func _process(delta):
 		cutAction = false
 		mouseHeld = false
 		
+	
+	
 	if(cutAction):
 		$Line.default_color = Color.RED
 	else:
 		$Line.default_color = Color.WHITE
 	
-	
-	TrailPoints.push_front(get_global_mouse_position())
+	if !get_tree().paused:
+		TrailPoints.push_front(get_global_mouse_position())
 	if TrailPoints.size() >= 11:
 		TrailPoints.pop_back()
+	if get_tree().paused && gotPaused:
+		TrailPoints.fill(get_global_mouse_position())
+		gotPaused = false
 	$Line.points = TrailPoints
+	
+	if get_tree().paused:
+		gotPaused = true
 	pass

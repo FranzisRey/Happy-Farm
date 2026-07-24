@@ -53,6 +53,7 @@ animations = [{
 }]
 
 [node name="Rice crop" type="AnimatedSprite2D" unique_id=1199876418 groups=["Rice crop"]]
+process_mode = 1
 material = SubResource("ShaderMaterial_uxp68")
 sprite_frames = SubResource("SpriteFrames_j8mak")
 script = ExtResource("3_ii7eq")
