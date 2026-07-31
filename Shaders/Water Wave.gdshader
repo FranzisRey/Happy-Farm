@@ -1,0 +1,25 @@
+shader_type canvas_item;
+
+uniform float speed = .1;
+uniform float wavesize = 1;
+void vertex() {
+	if (UV.y <= .5)
+	{
+		UV.x += sin(TIME*speed)*wavesize;
+		UV.y += cos(TIME*speed*sin(TIME)*.001)*wavesize*.1;
+	}	
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	if (UV.y <= .5)
+	{
+		COLOR.a = 0.0;
+	}
+	// Called for every pixel the material is visible on.
+}
+
+//void light() {
+//	// Called for every pixel for every light affecting the CanvasItem.
+//	// Uncomment to replace the default light processing function with this one.
+//}

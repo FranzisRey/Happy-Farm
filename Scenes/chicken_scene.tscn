@@ -7,7 +7,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_15ly4"]
 radius = 1.0
 
-[node name="Chicken_scene" type="Node2D" unique_id=1217332766]
+[node name="Chicken_scene" type="Node2D" unique_id=1217332766 groups=["Cant Pause"]]
 
 [node name="Chicken_pen" parent="." unique_id=1909793426 instance=ExtResource("1_15ly4")]
 position = Vector2(-142, 0)

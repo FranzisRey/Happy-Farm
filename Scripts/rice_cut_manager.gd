@@ -10,10 +10,16 @@ var canCut = false # if can start cut
 var isCutStart = false # if the cutting is started
 var cutIsDone = false # if the cutting is done
 var time = 0
-var maxRow = 9
+var maxRow = 3
+var EndingThing = false
+
+
+var Ranks = ["F", "D", "C", "B", "A", "S"]
 
 @onready var one_second_timer = $"OneSecond Timer"
 @onready var next_row_anim = $NextRowAnim
+@onready var ending_timer = $"Ending Timer"
+@onready var final_anim = $CanvasLayer/RankShowing/FinalAnim
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
@@ -46,12 +52,22 @@ func _process(delta):
 			if !cutIsDone:
 				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 				print("Final Score: %d/405" % [CutTotalRank])
+				CutTotalRank = 350
 				var cropNumRank = max(min(ceil((float(CutTotalRank)-250) / 25) + 1, 6), 1)
-
+				
 				var timerNumRank = min(6 - ceil((float(time)-60) / 30), 6)
+				
+				
+				if !final_anim.is_playing() && !EndingThing:
+					ending_timer.start()
+					EndingThing = true
+					final_anim.play("FinalRank")
+				
+				$CanvasLayer/RankShowing/Label.text = "Cut Rank: %s\nTime Rank: %s" % [Ranks[cropNumRank-1], Ranks[timerNumRank-1]]
 				GameManager.rice_cut_rank = cropNumRank - (6-timerNumRank)
 				GameManager.StoryStage = 5
 				print(cropNumRank, " ", timerNumRank)
+				
 				
 			canCut = false
 			cutIsDone = true
@@ -65,3 +81,9 @@ func _process(delta):
 			
 func TimeGoUp():
 	time += 1
+
+
+func _on_ending_timer_timeout():
+	GameManager.saved_player_pos = Vector2(816, 144)
+	GameManager.ChangeSceneNormal("res://Scenes/main_farm.tscn")
+	pass # Replace with function body.

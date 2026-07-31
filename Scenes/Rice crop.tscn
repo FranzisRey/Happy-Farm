@@ -17,7 +17,7 @@ shader = ExtResource("1_os06x")
 shader_parameter/slope = 0.0
 shader_parameter/offset = 32.0
 shader_parameter/colorThing = Color(1, 1, 1, 1)
-shader_parameter/strength = 1.0000000475
+shader_parameter/strength = 1.0
 shader_parameter/isGray = false
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_j8mak"]

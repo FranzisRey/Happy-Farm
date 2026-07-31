@@ -4,29 +4,78 @@
 [ext_resource type="Script" uid="uid://c1xqk654m5bab" path="res://Scripts/rice_cut_manager.gd" id="1_k22yq"]
 [ext_resource type="Texture2D" uid="uid://dlmfka2aqp6f7" path="res://Sprites/Ricefieldgamebg.png" id="3_7e167"]
 [ext_resource type="PackedScene" uid="uid://bcb0g85qgqnnb" path="res://Scenes/Rice crop.tscn" id="3_euuvj"]
+[ext_resource type="Shader" uid="uid://ci67624t2bk73" path="res://Shaders/Water Wave.gdshader" id="4_3t7vw"]
 [ext_resource type="Shader" uid="uid://0dobemnptju3" path="res://Shaders/rice_cut_shader.gdshader" id="4_jvxu6"]
 [ext_resource type="Script" uid="uid://bgfig2w71hbar" path="res://Scripts/mouse_manager_mango.gd" id="5_7e167"]
 [ext_resource type="Script" uid="uid://thqru8iwe0f2" path="res://Scripts/Storyish based scripts/rice_cut_story_stage_4.gd" id="6_3y2gg"]
 [ext_resource type="Texture2D" uid="uid://ce1tujktuyqf7" path="res://Sprites/dotted lines.png" id="7_uveq3"]
 [ext_resource type="Script" uid="uid://b8e7a3hf4v22g" path="res://Scripts/brocken_line_move.gd" id="8_jvxu6"]
+[ext_resource type="Shader" uid="uid://c73boclxqf1ub" path="res://Shaders/Rice Wave.gdshader" id="11_uhc26"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3t7vw"]
-resource_local_to_scene = true
-shader = ExtResource("4_jvxu6")
-shader_parameter/slope = 0.0
-shader_parameter/offset = 32.0
-shader_parameter/colorThing = Color(1, 1, 1, 1)
-shader_parameter/strength = 1.0
-shader_parameter/isGray = false
+[sub_resource type="Animation" id="Animation_uhc26"]
+resource_name = "FinalRank"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RankShowing:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RankShowing:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.39229232, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 40)]
+}
+
+[sub_resource type="Animation" id="Animation_0ki4j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RankShowing:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RankShowing:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j0yb4"]
+_data = {
+&"FinalRank": SubResource("Animation_uhc26"),
+&"RESET": SubResource("Animation_0ki4j")
+}
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uhc26"]
-resource_local_to_scene = true
-shader = ExtResource("4_jvxu6")
-shader_parameter/slope = 0.0
-shader_parameter/offset = 32.0
-shader_parameter/colorThing = Color(1, 1, 1, 1)
-shader_parameter/strength = 1.0
-shader_parameter/isGray = false
+shader = ExtResource("4_3t7vw")
+shader_parameter/speed = 1.0
+shader_parameter/wavesize = 0.05
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0ki4j"]
 resource_local_to_scene = true
@@ -83,6 +132,24 @@ shader_parameter/strength = 1.0
 shader_parameter/isGray = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d3ftn"]
+resource_local_to_scene = true
+shader = ExtResource("4_jvxu6")
+shader_parameter/slope = 0.0
+shader_parameter/offset = 32.0
+shader_parameter/colorThing = Color(1, 1, 1, 1)
+shader_parameter/strength = 1.0
+shader_parameter/isGray = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iepbl"]
+resource_local_to_scene = true
+shader = ExtResource("4_jvxu6")
+shader_parameter/slope = 0.0
+shader_parameter/offset = 32.0
+shader_parameter/colorThing = Color(1, 1, 1, 1)
+shader_parameter/strength = 1.0
+shader_parameter/isGray = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xsfmj"]
 resource_local_to_scene = true
 shader = ExtResource("4_jvxu6")
 shader_parameter/slope = 0.0
@@ -157,7 +224,12 @@ _data = {
 &"RESET": SubResource("Animation_3y2gg")
 }
 
-[node name="rice cut  Scene" type="Node2D" unique_id=373161630]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y7j71"]
+shader = ExtResource("11_uhc26")
+shader_parameter/speed = 1.0
+shader_parameter/wavesize = 0.05
+
+[node name="rice cut  Scene" type="Node2D" unique_id=373161630 groups=["Cant Pause"]]
 process_mode = 1
 script = ExtResource("1_k22yq")
 
@@ -183,6 +255,26 @@ offset_right = 51.0
 offset_bottom = 26.0
 text = "00:00"
 
+[node name="RankShowing" type="Control" parent="CanvasLayer" unique_id=1922393087]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0002
+
+[node name="Label" type="Label" parent="CanvasLayer/RankShowing" unique_id=694148206]
+layout_mode = 0
+offset_left = -44.0
+offset_top = -90.0
+offset_right = 42.0
+offset_bottom = -41.0
+text = "Rice rank:
+Time Rank:"
+
+[node name="FinalAnim" type="AnimationPlayer" parent="CanvasLayer/RankShowing" unique_id=296573985]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_j0yb4")
+
 [node name="Camera" type="Camera2D" parent="." unique_id=815973580]
 zoom = Vector2(4, 4)
 script = ExtResource("1_g5aql")
@@ -192,59 +284,55 @@ texture = ExtResource("3_7e167")
 vframes = 3
 
 [node name="WATER" type="Sprite2D" parent="." unique_id=747902110]
+material = SubResource("ShaderMaterial_uhc26")
 texture = ExtResource("3_7e167")
 vframes = 3
 frame = 1
-
-[node name="RICE" type="Sprite2D" parent="." unique_id=804855118]
-texture = ExtResource("3_7e167")
-vframes = 3
-frame = 2
 
 [node name="Rice field" type="Node2D" parent="." unique_id=778509597]
 position = Vector2(-128, 16)
 
 [node name="Rice crop 1" parent="Rice field" unique_id=1199876418 instance=ExtResource("3_euuvj")]
-material = SubResource("ShaderMaterial_3t7vw")
+material = SubResource("ShaderMaterial_0ki4j")
 
 [node name="Rice crop 2" parent="Rice field" unique_id=1349931400 instance=ExtResource("3_euuvj")]
-material = SubResource("ShaderMaterial_uhc26")
+material = SubResource("ShaderMaterial_j0yb4")
 position = Vector2(32, 0)
 
 [node name="Rice crop 3" parent="Rice field" unique_id=1741565790 instance=ExtResource("3_euuvj")]
-material = SubResource("ShaderMaterial_0ki4j")
+material = SubResource("ShaderMaterial_a03kw")
 position = Vector2(65, 0)
 
 [node name="Rice crop 4" parent="Rice field" unique_id=997306203 instance=ExtResource("3_euuvj")]
-material = SubResource("ShaderMaterial_j0yb4")
+material = SubResource("ShaderMaterial_u06vv")
 position = Vector2(97, 0)
 
 [node name="Rice crop 5" parent="Rice field" unique_id=89362020 instance=ExtResource("3_euuvj")]
-material = SubResource("ShaderMaterial_a03kw")
+material = SubResource("ShaderMaterial_20wo5")
 position = Vector2(128, 0)
 
 [node name="Rice crop 6" parent="Rice field" unique_id=343247909 instance=ExtResource("3_euuvj")]
-material = SubResource("ShaderMaterial_u06vv")
+material = SubResource("ShaderMaterial_7t2s6")
 position = Vector2(160, 0)
 
 [node name="Rice crop 7" parent="Rice field" unique_id=818201561 instance=ExtResource("3_euuvj")]
-material = SubResource("ShaderMaterial_20wo5")
+material = SubResource("ShaderMaterial_d3ftn")
 position = Vector2(193, 0)
 
 [node name="Rice crop 8" parent="Rice field" unique_id=558165593 instance=ExtResource("3_euuvj")]
-material = SubResource("ShaderMaterial_7t2s6")
+material = SubResource("ShaderMaterial_iepbl")
 position = Vector2(225, 0)
 
 [node name="Rice crop 9" parent="Rice field" unique_id=855930820 instance=ExtResource("3_euuvj")]
-material = SubResource("ShaderMaterial_d3ftn")
+material = SubResource("ShaderMaterial_xsfmj")
 position = Vector2(256, 0)
 
 [node name="Mouse Manager" type="Node2D" parent="." unique_id=2040694741]
 process_mode = 3
+z_index = 1
 script = ExtResource("5_7e167")
 
 [node name="Line" type="Line2D" parent="Mouse Manager" unique_id=1398975701]
-z_index = 2
 points = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 width = 1.0
 width_curve = SubResource("Curve_jvxu6")
@@ -264,6 +352,7 @@ offset_bottom = -16.0
 text = "How to do it"
 
 [node name="brocken line" type="Sprite2D" parent="." unique_id=637209075]
+modulate = Color(1, 0.05859375, 0.05859375, 1)
 texture_repeat = 2
 position = Vector2(0, 28)
 texture = ExtResource("7_uveq3")
@@ -272,6 +361,13 @@ region_enabled = true
 region_rect = Rect2(0, 10, 512, 1)
 script = ExtResource("8_jvxu6")
 
+[node name="RICE" type="Sprite2D" parent="." unique_id=804855118]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_y7j71")
+texture = ExtResource("3_7e167")
+vframes = 3
+frame = 2
+
 [node name="OneSecond Timer" type="Timer" parent="." unique_id=1412994815]
 
 [node name="CutTimer" type="Timer" parent="." unique_id=1464534969]
@@ -279,7 +375,14 @@ wait_time = 0.2
 one_shot = true
 
 [node name="NextRowTimer" type="Timer" parent="." unique_id=707879510]
+one_shot = true
 
 [node name="NextRowWaitToReset" type="Timer" parent="." unique_id=984868035]
 wait_time = 0.25
 one_shot = true
+
+[node name="Ending Timer" type="Timer" parent="." unique_id=1845875644]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="Ending Timer" to="." method="_on_ending_timer_timeout"]

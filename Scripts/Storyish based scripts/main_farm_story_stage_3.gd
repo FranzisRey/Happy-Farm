@@ -9,6 +9,7 @@ var dialStage = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if GameManager.StoryStage == 3:
+		visible = true
 		pass
 	else:
 		talk.disabled = true
@@ -59,7 +60,7 @@ func _on_talk_pressed():
 	GameManager.InCutscene = true
 	GameManager.PlayBlackAnim(0)
 	await get_tree().create_timer(.15).timeout
-	player.position = Vector2(1015.0 ,221.0)
+	player.global_position = sister.global_position + Vector2(0,20)
 	player.hatSprite.play("Up")
 	player.bodySprite.play("Up")
 	player.armSprite.play("Up")

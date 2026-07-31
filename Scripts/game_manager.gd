@@ -11,6 +11,7 @@ var rice_cut_rank = -1
 @onready var dialog_box = $CanvasLayer/DialogBox
 @onready var saved_player_pos:Vector2 = Vector2.INF
 @onready var icon = $CanvasLayer/DialogBox/Icon
+@onready var icon_bg = $"CanvasLayer/DialogBox/Icon BG"
 var InCutscene:bool = false
 var TextSlowShowing = false
 var TextShowingTime = 0
@@ -180,15 +181,15 @@ func ChangeSceneNormal(path:String, ifFadeIn:bool = true):
 # x is where the dialog is, y is where the dialog is
 #type = 0 is no icon, type = 1 has icon
 func SetDialog(text:String = "", ifVisible:bool = false, type:int = 0, pfp:String = "", spd:int = -1):
-	
 	if !TextSlowShowing:
 		label.visible_characters = 0
 	if ifVisible:
 		TextSlowShowing = true
 	TextShowSpeed = spd
-	label.offset_left = type*48+16
+	label.offset_left = type*48+8
 	label.text = text
 	icon.visible = type
+	icon_bg.visible = type
 	icon.texture = load(pfp)
 	dialog_box.visible = ifVisible
 	return false

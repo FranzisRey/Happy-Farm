@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ds441bysyypk" path="res://Scenes/sister.tscn" id="7_fggfr"]
 [ext_resource type="Texture2D" uid="uid://e75bihd03qf2" path="res://Sprites/Rice field.png" id="8_2wjl8"]
 [ext_resource type="PackedScene" uid="uid://cxajr2y8ftopq" path="res://Scenes/check_button.tscn" id="9_42yyb"]
+[ext_resource type="Script" uid="uid://bwwod1t71cb2s" path="res://Scripts/Storyish based scripts/main_farm_story_stage_5.gd" id="10_4h5dr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mafmv"]
 texture = ExtResource("1_gqiv3")
@@ -182,8 +183,9 @@ position = Vector2(288, 128)
 texture = ExtResource("5_74g2k")
 
 [node name="StoryStage3" type="Node2D" parent="." unique_id=648357357]
+visible = false
 y_sort_enabled = true
-position = Vector2(-1, -10)
+position = Vector2(-200, -67)
 script = ExtResource("6_74g2k")
 
 [node name="Sister" parent="StoryStage3" unique_id=161219978 instance=ExtResource("7_fggfr")]
@@ -204,5 +206,12 @@ offset_top = 170.0
 offset_right = 1026.0
 offset_bottom = 186.0
 text = "Talk"
+
+[node name="StoryStage5" type="Node2D" parent="." unique_id=1946424801]
+script = ExtResource("10_4h5dr")
+
+[node name="Sister" parent="StoryStage5" unique_id=377787694 instance=ExtResource("7_fggfr")]
+z_index = 1
+position = Vector2(815, 177)
 
 [connection signal="pressed" from="StoryStage3/Player Check/Talk" to="StoryStage3" method="_on_talk_pressed"]

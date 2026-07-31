@@ -57,7 +57,7 @@ func Cut():
 					material.set("shader_parameter/strength", 1.5)
 				elif thisCutRank >= 4:
 					material.set("shader_parameter/isGray", true)
-					material.set("shader_parameter/strength", 1.7)
+					
 				elif thisCutRank >= 2:
 					material.set("shader_parameter/colorThing", Color.BROWN)
 					material.set("shader_parameter/strength", 3.0)

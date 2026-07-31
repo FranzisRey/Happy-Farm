@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c58dk8nxrbc3u" path="res://Scripts/game_manager.gd" id="1_1qqqt"]
 [ext_resource type="Theme" uid="uid://dckpdjafn2qat" path="res://Fonts and Stuff/Baisc_theme.tres" id="2_0pyuc"]
 [ext_resource type="Texture2D" uid="uid://d0jfee2srl47p" path="res://Sprites/Player png faces/1Player_Calm(nohat).png" id="3_f1e5s"]
+[ext_resource type="Texture2D" uid="uid://d3sw2vmlkhti" path="res://Sprites/Dialoguebox.png" id="4_egdld"]
 [ext_resource type="Script" uid="uid://mrdfrdjrk3u0" path="res://Scripts/save_load_manager.gd" id="4_f1e5s"]
 
 [sub_resource type="Animation" id="Animation_f1e5s"]
@@ -86,9 +87,9 @@ anchor_left = -0.025
 anchor_top = 0.0055555557
 anchor_right = -0.025
 anchor_bottom = 0.0055555557
-offset_left = 64.0
+offset_left = 56.0
 offset_top = 131.0
-offset_right = 320.0
+offset_right = 328.0
 offset_bottom = 179.0
 theme = ExtResource("2_0pyuc")
 text = "Wag mong masyadong itaas ang pag-aani ha."
@@ -96,9 +97,24 @@ autowrap_mode = 2
 visible_characters_behavior = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="Icon BG" type="NinePatchRect" parent="CanvasLayer/DialogBox" unique_id=1336427916]
+layout_mode = 0
+offset_top = 132.0
+offset_right = 48.0
+offset_bottom = 180.0
+texture = ExtResource("4_egdld")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
 [node name="Icon" type="Sprite2D" parent="CanvasLayer/DialogBox" unique_id=1740944824]
-position = Vector2(24, 156)
+position = Vector2(0, 132)
 texture = ExtResource("3_f1e5s")
+centered = false
+region_rect = Rect2(0, 0, 48, 44)
 
 [node name="PauseThing" type="Label" parent="CanvasLayer" unique_id=1792875111]
 visible = false
@@ -110,7 +126,7 @@ text = "Pause"
 script = ExtResource("4_f1e5s")
 
 [node name="MinTimeLoad" type="Timer" parent="." unique_id=689573082]
-wait_time = 0.15
+wait_time = 0.2
 one_shot = true
 
 [node name="WhenComma" type="Timer" parent="." unique_id=72203972]
