@@ -10,6 +10,7 @@ var lastFramePos:Vector2
 func _ready():
 	lastFramePos =  position
 	if get_tree().current_scene.name != "Main Farm":
+		print("sure")
 		hat.visible = false
 	pass # Replace with function body.
 

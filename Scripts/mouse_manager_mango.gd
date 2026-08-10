@@ -6,23 +6,28 @@ var CutPoints = [Vector2(NAN,NAN),Vector2(NAN,NAN)]
 var cutAction = false
 var mouseHeld = false
 var gotPaused = false
+
+var unpauseRehold = false
+
 signal finished
 @onready var rice_cut_scene = $".."
 
 @onready var cut_timer = $"../CutTimer"
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if get_tree().paused && !unpauseRehold:
+		unpauseRehold = true
+	elif !get_tree().paused && unpauseRehold && !Input.is_action_pressed("LMB"):
+		unpauseRehold = false
 	
 	
 	
-	
-	if(Input.is_action_pressed("LMB")) && rice_cut_scene.canCut && !GameManager.InCutscene && !get_tree().paused:
+	if(Input.is_action_pressed("LMB")) && rice_cut_scene.canCut && !GameManager.InCutscene && !get_tree().paused && !unpauseRehold:
 		
 		if(!cutAction && !mouseHeld):
 			CutPoints[0] = get_global_mouse_position()
@@ -48,6 +53,7 @@ func _process(delta):
 					print("- please")
 			cutAction = false
 		mouseHeld = true
+		
 	else:
 		CutPoints = [Vector2(NAN,NAN),Vector2(NAN,NAN)]
 		cut_timer.stop()

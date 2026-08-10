@@ -10,7 +10,7 @@ var canCut = false # if can start cut
 var isCutStart = false # if the cutting is started
 var cutIsDone = false # if the cutting is done
 var time = 0
-var maxRow = 3
+var maxRow = 3 #TODO this should be 9
 var EndingThing = false
 
 
@@ -52,7 +52,9 @@ func _process(delta):
 			if !cutIsDone:
 				Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 				print("Final Score: %d/405" % [CutTotalRank])
-				CutTotalRank = 350
+				
+				CutTotalRank = 350 # ALERT remove this when at the finnsihed
+				
 				var cropNumRank = max(min(ceil((float(CutTotalRank)-250) / 25) + 1, 6), 1)
 				
 				var timerNumRank = min(6 - ceil((float(time)-60) / 30), 6)

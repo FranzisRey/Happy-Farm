@@ -81,6 +81,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	# Pausing
 	if Input.is_action_just_pressed("ESC") && !isPaused && !get_tree().get_first_node_in_group("Cant Pause"):
 		$CanvasLayer/PauseThing.visible = true
 		print("pause")

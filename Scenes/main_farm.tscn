@@ -208,10 +208,10 @@ offset_bottom = 186.0
 text = "Talk"
 
 [node name="StoryStage5" type="Node2D" parent="." unique_id=1946424801]
+y_sort_enabled = true
 script = ExtResource("10_4h5dr")
 
 [node name="Sister" parent="StoryStage5" unique_id=377787694 instance=ExtResource("7_fggfr")]
-z_index = 1
 position = Vector2(815, 177)
 
 [connection signal="pressed" from="StoryStage3/Player Check/Talk" to="StoryStage3" method="_on_talk_pressed"]
