@@ -6,8 +6,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_0aysh"]
 radius = 1.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_abogf"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nnmhy"]
 radius = 4.0
+height = 10.0
 
 [node name="Mango" type="Node2D" unique_id=960435102]
 script = ExtResource("1_abogf")
@@ -30,9 +31,10 @@ collision_mask = 70
 can_sleep = false
 
 [node name="CollisionShape" type="CollisionShape2D" parent="PinJoint/Mango" unique_id=789311204]
-shape = SubResource("CircleShape2D_abogf")
+rotation = 1.5689294
+shape = SubResource("CapsuleShape2D_nnmhy")
 
 [node name="Mango" type="Sprite2D" parent="PinJoint/Mango" unique_id=207439901]
 texture = ExtResource("2_nnmhy")
 region_enabled = true
-region_rect = Rect2(20, 4, 8, 8)
+region_rect = Rect2(19, 4, 9, 8)
