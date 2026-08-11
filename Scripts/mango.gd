@@ -13,13 +13,13 @@ func _ready():
 func _process(delta):
 	
 	
+	
 	if has_node(mango_path):
 		if mango.global_position.y >= 130:
 			queue_free()
 			
 			
 		if pin.position.distance_to(mango.position) >= 3:
-			print("YES")
 			pin_joint.softness = 10
 		else:
 			pin_joint.softness = 0
@@ -28,8 +28,3 @@ func _process(delta):
 			pin_joint.node_b = NodePath("")
 	else:
 		queue_free()
-		
-	
-		
-	
-	pass

@@ -1,7 +1,9 @@
 extends Node2D
 
 var mangoNode
+
 @onready var mango_picker = $"Mango picker"
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,11 +20,22 @@ func _process(delta):
 	var mousePos = get_global_mouse_position()
 	
 	if get_tree().get_node_count_in_group("Mango") <= 0:
-		for i in range(10):
+		var i = 0
+		var mangoPosArr = []
+		while(i <= 20):
+			var mangoYes = true
 			var mangoIn = mangoNode.instantiate()
+			
 			mangoIn.position.x = randf_range(-100, 100)
 			mangoIn.position.y = randf_range(-60, 0)
-			add_child(mangoIn)
+			for j in mangoPosArr:
+				if mangoIn.position.distance_to(j.position) <= 15:
+					print(mangoIn.position.distance_to(j.position))
+					mangoYes = false
+			if mangoYes:
+				add_child(mangoIn)
+				mangoPosArr.push_front(mangoIn)
+				i += 1
 	
 	
 	mango_picker.position = mousePos
