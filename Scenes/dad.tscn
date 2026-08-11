@@ -387,7 +387,7 @@ animation = &"Down"
 
 [node name="Hat" type="AnimatedSprite2D" parent="." unique_id=1925877685]
 sprite_frames = SubResource("SpriteFrames_5rkai")
-animation = &"Up"
+animation = &"Down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1298281406]
 position = Vector2(0, 7)
