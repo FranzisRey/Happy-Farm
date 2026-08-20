@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://e75bihd03qf2" path="res://Sprites/Rice field.png" id="8_2wjl8"]
 [ext_resource type="PackedScene" uid="uid://cxajr2y8ftopq" path="res://Scenes/check_button.tscn" id="9_42yyb"]
 [ext_resource type="Script" uid="uid://bwwod1t71cb2s" path="res://Scripts/Storyish based scripts/main_farm_story_stage_5.gd" id="10_4h5dr"]
+[ext_resource type="Script" uid="uid://hcvsbghbs0wu" path="res://Scripts/dad_next_to_the_house.gd" id="11_gdq4e"]
+[ext_resource type="PackedScene" uid="uid://cucnmo24mu773" path="res://Scenes/dad.tscn" id="11_yvgeu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mafmv"]
 texture = ExtResource("1_gqiv3")
@@ -111,6 +113,9 @@ size = Vector2(22, 34)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4h5dr"]
 size = Vector2(16, 1)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gdq4e"]
+size = Vector2(14, 1)
+
 [node name="Main Farm" type="Node2D" unique_id=2002135892]
 y_sort_enabled = true
 script = ExtResource("1_aq8tc")
@@ -183,7 +188,6 @@ position = Vector2(288, 128)
 texture = ExtResource("5_74g2k")
 
 [node name="StoryStage3" type="Node2D" parent="." unique_id=648357357]
-visible = false
 y_sort_enabled = true
 position = Vector2(-200, -67)
 script = ExtResource("6_74g2k")
@@ -191,27 +195,53 @@ script = ExtResource("6_74g2k")
 [node name="Sister" parent="StoryStage3" unique_id=161219978 instance=ExtResource("7_fggfr")]
 position = Vector2(1016, 211)
 
-[node name="Player Check" type="Area2D" parent="StoryStage3" unique_id=1842767408]
-position = Vector2(2, 5)
+[node name="Talk" parent="StoryStage3" unique_id=882308414 instance=ExtResource("9_42yyb")]
+offset_left = 1003.0
+offset_top = 175.0
+offset_right = 1029.0
+offset_bottom = 189.0
+text = "Talk"
+
+[node name="Player Check" type="Area2D" parent="StoryStage3/Talk" unique_id=1842767408]
+position = Vector2(-1001, -170)
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StoryStage3/Player Check" unique_id=1908491454]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StoryStage3/Talk/Player Check" unique_id=1908491454]
 z_index = 1
 position = Vector2(1014, 223.5)
 shape = SubResource("RectangleShape2D_4h5dr")
 
-[node name="Talk" parent="StoryStage3/Player Check" unique_id=882308414 instance=ExtResource("9_42yyb")]
-offset_left = 1002.0
-offset_top = 170.0
-offset_right = 1026.0
-offset_bottom = 186.0
-text = "Talk"
-
 [node name="StoryStage5" type="Node2D" parent="." unique_id=1946424801]
+visible = false
 y_sort_enabled = true
 script = ExtResource("10_4h5dr")
 
 [node name="Sister" parent="StoryStage5" unique_id=377787694 instance=ExtResource("7_fggfr")]
 position = Vector2(815, 177)
 
-[connection signal="pressed" from="StoryStage3/Player Check/Talk" to="StoryStage3" method="_on_talk_pressed"]
+[node name="DadNextToTheHouse" type="Node2D" parent="." unique_id=533531886]
+y_sort_enabled = true
+script = ExtResource("11_gdq4e")
+
+[node name="Dad" parent="DadNextToTheHouse" unique_id=356480342 instance=ExtResource("11_yvgeu")]
+position = Vector2(400, 112)
+
+[node name="Talk Button" parent="DadNextToTheHouse" unique_id=739788810 instance=ExtResource("9_42yyb")]
+visible = false
+offset_left = 389.0
+offset_top = 77.0
+offset_right = 411.0
+offset_bottom = 93.0
+text = "Talk"
+
+[node name="Player Check" type="Area2D" parent="DadNextToTheHouse/Talk Button" unique_id=856766879]
+z_index = 1
+position = Vector2(-389, -77)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DadNextToTheHouse/Talk Button/Player Check" unique_id=694519692]
+position = Vector2(400, 129)
+shape = SubResource("RectangleShape2D_gdq4e")
+
+[connection signal="pressed" from="StoryStage3/Talk" to="StoryStage3" method="_on_talk_pressed"]
+[connection signal="pressed" from="DadNextToTheHouse/Talk Button" to="DadNextToTheHouse" method="_on_talk_button_pressed"]

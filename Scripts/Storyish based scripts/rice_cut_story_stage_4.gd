@@ -5,11 +5,11 @@ var diaStage = -1
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if GameManager.StoryStage == 4:
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(1, false).timeout
 		diaStage = 1
 		GameManager.InCutscene = true
 		$Label.visible = true
-		GameManager.SetDialog("Wag mong masyadong itaas ang pag-aani ha.", true, 0, "", 3)
+		GameManager.SetDialog("Wag mong masyadong itaas ang pag-aani ha.", true, 1, GameManager._1_sister_calm, 2) # sis 1
 	pass # Replace with function body.
 
 
@@ -20,9 +20,9 @@ func _process(delta):
 			diaStage += 1
 			match diaStage:
 				2:
-					GameManager.SetDialog("Oo, alam ko pa naman kung anong gagawin ko dine.", true, 0, "", 2)
+					GameManager.SetDialog("Oo, alam ko pa naman kung anong gagawin ko dine.", true, 1, GameManager._7_player_smug, 2) # player 7
 				3:
-					GameManager.SetDialog("Tinutulungan na nga at lahat >:(", true, 0, "", 3)
+					GameManager.SetDialog("Tinutulungan na nga at lahat >:(", true, 1, GameManager._3_sister_angry, 2) # sis 3
 				4:
 					$Label.visible = false
 					GameManager.InCutscene = false
