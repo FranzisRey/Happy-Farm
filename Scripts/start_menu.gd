@@ -26,4 +26,9 @@ func _on_button_button_down():
 		GameManager.saved_player_pos = Vector2(816, 144)
 		await get_tree().create_timer(.75).timeout
 		GameManager.ChangeSceneNormal("res://Scenes/main_farm.tscn")
+	elif GameManager.StoryStage == 6:
+		GameManager.PlayBlackAnim(0)
+		GameManager.saved_player_pos = Vector2(816, 144)
+		await get_tree().create_timer(.75).timeout
+		GameManager.ChangeSceneNormal("res://Scenes/main_farm.tscn")
 	pass # Replace with function body.

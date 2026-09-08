@@ -6,9 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://bcb0g85qgqnnb" path="res://Scenes/Rice crop.tscn" id="3_euuvj"]
 [ext_resource type="Shader" uid="uid://ci67624t2bk73" path="res://Shaders/Water Wave.gdshader" id="4_3t7vw"]
 [ext_resource type="Shader" uid="uid://0dobemnptju3" path="res://Shaders/rice_cut_shader.gdshader" id="4_jvxu6"]
-[ext_resource type="Script" uid="uid://bgfig2w71hbar" path="res://Scripts/mouse_manager_mango.gd" id="5_7e167"]
+[ext_resource type="Script" uid="uid://bgfig2w71hbar" path="res://Scripts/mouse_manager_rice_cut.gd" id="5_7e167"]
 [ext_resource type="Script" uid="uid://thqru8iwe0f2" path="res://Scripts/Storyish based scripts/rice_cut_story_stage_4.gd" id="6_3y2gg"]
 [ext_resource type="Texture2D" uid="uid://ce1tujktuyqf7" path="res://Sprites/dotted lines.png" id="7_uveq3"]
+[ext_resource type="Texture2D" uid="uid://bxy5ec8q55uwn" path="res://Sprites/10x10sickle.png" id="8_0ki4j"]
 [ext_resource type="Script" uid="uid://b8e7a3hf4v22g" path="res://Scripts/brocken_line_move.gd" id="8_jvxu6"]
 [ext_resource type="Shader" uid="uid://c73boclxqf1ub" path="res://Shaders/Rice Wave.gdshader" id="11_uhc26"]
 
@@ -336,6 +337,10 @@ script = ExtResource("5_7e167")
 points = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 width = 1.0
 width_curve = SubResource("Curve_jvxu6")
+
+[node name="Suckle" type="Sprite2D" parent="Mouse Manager" unique_id=1851623029]
+position = Vector2(4, 1)
+texture = ExtResource("8_0ki4j")
 
 [node name="NextRowAnim" type="AnimationPlayer" parent="." unique_id=1395002058]
 libraries/ = SubResource("AnimationLibrary_uveq3")

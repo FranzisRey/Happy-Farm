@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://coekwvdo53bwt"]
+
+[ext_resource type="Script" uid="uid://djaqsn4cbe8c3" path="res://Scripts/rice_wack_manager.gd" id="1_tw3fl"]
+[ext_resource type="Script" uid="uid://cwxps8wgoumo5" path="res://Scripts/mouse_manager_rice_wack.gd" id="1_v7bin"]
+[ext_resource type="Texture2D" uid="uid://dd7hjuiqvaowx" path="res://Sprites/Wackedpalay.png" id="2_qr0cd"]
+[ext_resource type="Script" uid="uid://4gqx6pijjw2p" path="res://Scripts/cameraZoomResetter.gd" id="2_scoo0"]
+[ext_resource type="Texture2D" uid="uid://det5tddy3fqch" path="res://Sprites/Minigame stuff.png" id="4_5m4aa"]
+[ext_resource type="Texture2D" uid="uid://b1x4rdfe5w6va" path="res://Sprites/Grass and Path.png" id="4_f146u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qr0cd"]
+radius = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qr0cd"]
+atlas = ExtResource("2_qr0cd")
+region = Rect2(0, 0, 80, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5m4aa"]
+atlas = ExtResource("2_qr0cd")
+region = Rect2(0, 49, 80, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tw3fl"]
+atlas = ExtResource("2_qr0cd")
+region = Rect2(0, 98, 80, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7mud"]
+atlas = ExtResource("4_f146u")
+region = Rect2(0, 144, 80, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qr0cd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qr0cd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5m4aa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tw3fl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7mud")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5m4aa"]
+radius = 28.284271
+
+[node name="rice_wack_scene" type="Node2D" unique_id=70204520]
+script = ExtResource("1_tw3fl")
+
+[node name="Mouse Manager" type="Node2D" parent="." unique_id=109941460]
+script = ExtResource("1_v7bin")
+
+[node name="MousePos" type="Node2D" parent="Mouse Manager" unique_id=1911618504]
+
+[node name="Sickle" type="RigidBody2D" parent="Mouse Manager" unique_id=864830922]
+z_index = 1
+collision_layer = 256
+collision_mask = 512
+lock_rotation = true
+freeze = true
+freeze_mode = 1
+custom_integrator = true
+continuous_cd = 2
+contact_monitor = true
+max_contacts_reported = 1
+
+[node name="3Big" type="CollisionPolygon2D" parent="Mouse Manager/Sickle" unique_id=860472510]
+polygon = PackedVector2Array(-1, 1, -36, -14, -70, -15, -52, -39, -21, -31, 1, -1)
+
+[node name="2Big" type="CollisionPolygon2D" parent="Mouse Manager/Sickle" unique_id=1040991622]
+polygon = PackedVector2Array(-1, 1, -36, -14, -43, -20, -23, -27, -6, -19, 1, -1)
+
+[node name="1Big" type="CollisionPolygon2D" parent="Mouse Manager/Sickle" unique_id=455459424]
+polygon = PackedVector2Array(-1, 1, -32, -13, -30, -19, -17, -23, -6, -19, 1, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mouse Manager/Sickle" unique_id=2094697422]
+shape = SubResource("CircleShape2D_qr0cd")
+
+[node name="Rice getting whacked" type="AnimatedSprite2D" parent="Mouse Manager/Sickle" unique_id=2015243147]
+position = Vector2(-39, -23)
+sprite_frames = SubResource("SpriteFrames_qr0cd")
+flip_h = true
+
+[node name="HitTimer" type="Timer" parent="Mouse Manager" unique_id=1768049743]
+wait_time = 0.5
+one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=456434522]
+zoom = Vector2(4, 4)
+script = ExtResource("2_scoo0")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2003345257]
+collision_layer = 512
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1036328655]
+position = Vector2(-96, 25)
+shape = SubResource("CircleShape2D_5m4aa")
+
+[node name="MinigameStuff" type="Sprite2D" parent="StaticBody2D" unique_id=1083497954]
+position = Vector2(-96, 25)
+scale = Vector2(1.75, 1.75)
+texture = ExtResource("4_5m4aa")
+region_enabled = true
+region_rect = Rect2(32, 0, 32, 32)

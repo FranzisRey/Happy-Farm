@@ -13,6 +13,7 @@ signal finished
 @onready var rice_cut_scene = $".."
 
 @onready var cut_timer = $"../CutTimer"
+@onready var suckle = $Suckle
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -20,6 +21,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
+	suckle.global_position = get_global_mouse_position() - Vector2(-4,-1)
+	
+	
 	if get_tree().paused && !unpauseRehold:
 		unpauseRehold = true
 	elif !get_tree().paused && unpauseRehold && !Input.is_action_pressed("LMB"):

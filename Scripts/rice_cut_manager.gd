@@ -22,7 +22,6 @@ var Ranks = ["F", "D", "C", "B", "A", "S"]
 @onready var final_anim = $CanvasLayer/RankShowing/FinalAnim
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
 	one_second_timer.timeout.connect(TimeGoUp)
 	rice_crop = preload("res://Scenes/Rice crop.tscn")
 	canCut = true

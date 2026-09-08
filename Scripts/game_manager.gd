@@ -20,6 +20,8 @@ signal TextIsFinsihed
 var ifFadedIn = true
 var MinTimeLoadStart: bool = false
 var isPaused = false
+signal GotPaused
+signal GotUnpaused
 
 
 
@@ -72,6 +74,7 @@ const _6_dad_joyful_nohat = "res://Sprites/Father png faces/6Father_Joyful(nohat
 const _6_dad_joyful = "res://Sprites/Father png faces/6Father_Joyful.png"
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Input.set_custom_mouse_cursor(load("res://Sprites/Suckle.png"), Input.CURSOR_CROSS)
 	saved_player_pos = Vector2.INF
 	$SaveLoadManager.Load()
 	get_window().content_scale_size = Vector2i(320, 180)
@@ -83,11 +86,13 @@ func _ready():
 func _process(delta):
 	# Pausing
 	if Input.is_action_just_pressed("ESC") && !isPaused && !get_tree().get_first_node_in_group("Cant Pause"):
+		GotPaused.emit()
 		$CanvasLayer/PauseThing.visible = true
 		print("pause")
 		isPaused = true
 		get_tree().paused = true
 	elif Input.is_action_just_pressed("ESC") && isPaused:
+		GotUnpaused.emit()
 		$CanvasLayer/PauseThing.visible = false
 		print("nah")
 		isPaused = false
