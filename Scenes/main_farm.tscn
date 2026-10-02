@@ -12,6 +12,9 @@
 [ext_resource type="Script" uid="uid://bwwod1t71cb2s" path="res://Scripts/Storyish based scripts/main_farm_story_stage_5.gd" id="10_4h5dr"]
 [ext_resource type="Script" uid="uid://hcvsbghbs0wu" path="res://Scripts/dad_next_to_the_house.gd" id="11_gdq4e"]
 [ext_resource type="PackedScene" uid="uid://cucnmo24mu773" path="res://Scenes/dad.tscn" id="11_yvgeu"]
+[ext_resource type="Script" uid="uid://bx5ibu8r6evb3" path="res://Scripts/Storyish based scripts/main_farm_story_stage_6.gd" id="13_df2xb"]
+[ext_resource type="Script" uid="uid://djil8aghb84vf" path="res://Scripts/Storyish based scripts/rice_cut_story_stage_8.gd" id="13_obaed"]
+[ext_resource type="Texture2D" uid="uid://baig8d202ajda" path="res://Sprites/Ricewhackingscenebirdseye.png" id="13_vbaai"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mafmv"]
 texture = ExtResource("1_gqiv3")
@@ -110,8 +113,14 @@ size = Vector2(79, 78)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fggfr"]
 size = Vector2(22, 34)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vbaai"]
+size = Vector2(62, 38)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4h5dr"]
 size = Vector2(16, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_df2xb"]
+size = Vector2(1, 14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gdq4e"]
 size = Vector2(14, 1)
@@ -126,7 +135,7 @@ tile_set = SubResource("TileSet_aq8tc")
 
 [node name="Path" type="TileMapLayer" parent="." unique_id=1304710451]
 position = Vector2(0, 1)
-tile_map_data = PackedByteArray("AAAGAAYAAAAAAAAAAAAGAAcAAAADAAAAAAAGAAgAAAADAAAAAAAGAAkAAAADAAAAAAAGAAoAAAACAAEAAAAHAAoAAAACAAAAAAAIAAoAAAACAAAAAAAJAAoAAAACAAAAAAAKAAoAAAACAAAAAAALAAoAAAACAAAAAAAMAAoAAAACAAAAAAANAAoAAAACAAAAAAAOAAoAAAACAAAAAAAPAAkAAAAAAAAAAAAQAAkAAAACAAAAAAARAAkAAAACAAAAAAASAAkAAAACAAAAAAATAAkAAAACAAAAAAAUAAkAAAACAAAAAAAPAAoAAAABAAEAAAAVAAkAAAACAAAAAAAWAAkAAAABAAEAAAAWAAgAAAAAAAAAAAAXAAgAAAACAAAAAAAYAAgAAAACAAAAAAAZAAgAAAABAAEAAAAZAAcAAAADAAEAAAAZAAYAAAAFAAEAAAAZAAUAAAAFAAIAAAAaAAcAAAACAAAAAAAbAAcAAAACAAAAAAAcAAcAAAACAAAAAAAdAAcAAAACAAAAAAAeAAcAAAACAAAAAAAgAAcAAAACAAEAAAAfAAcAAAACAAAAAAAgAAYAAAAFAAIAAAAhAAcAAAACAAAAAAAiAAcAAAACAAAAAAAjAAcAAAACAAAAAAAkAAcAAAACAAAAAAAlAAcAAAABAAEAAAAlAAYAAAADAAAAAAAlAAUAAAABAAAAAAAkAAUAAAAEAAIAAAAYAAYAAAACAAAAAAAXAAYAAAACAAAAAAAWAAYAAAACAAAAAAAVAAYAAAAAAAEAAAAVAAUAAAABAAAAAAAQAAUAAAACAAAAAAAPAAUAAAAAAAEAAAAPAAQAAAABAAAAAAAOAAQAAAACAAEAAAAOAAMAAAAFAAIAAAANAAQAAAACAAAAAAAMAAQAAAAAAAAAAAAMAAUAAAADAAAAAAAMAAYAAAABAAEAAAALAAYAAAACAAAAAAAKAAYAAAACAAAAAAAJAAYAAAACAAAAAAAIAAYAAAACAAAAAAAHAAYAAAACAAAAAAAFAAoAAAACAAAAAAAEAAoAAAACAAAAAAADAAoAAAACAAAAAAACAAoAAAACAAAAAAABAAoAAAACAAAAAAAAAAoAAAACAAAAAAD//woAAAACAAAAAAD9/woAAAACAAAAAAASAAUAAAACAAAAAAATAAUAAAACAAAAAAAUAAUAAAACAAAAAAARAAUAAAACAAAAAAD+/wkAAAADAAAAAAD+/wgAAAADAAAAAAD+/wcAAAADAAAAAAD+/wYAAAAFAAIAAAD+/woAAAACAAEAAAD8/woAAAAAAAAAAAD8/wsAAAADAAAAAAD8/wwAAAADAAAAAAD8/w0AAAADAAAAAAD8/w4AAAADAAAAAAD8/w8AAAADAAAAAAD8/xAAAAADAAAAAAD8/xEAAAADAAAAAAD8/xIAAAADAAAAAAD8/xMAAAADAAAAAAD8/xQAAAADAAAAAAD8/xUAAAADAAAAAAD8/xYAAAADAAAAAAD8/xcAAAADAAAAAAD8/xgAAAADAAIAAAA=")
+tile_map_data = PackedByteArray("AAAGAAYAAAAAAAAAAAAGAAcAAAADAAAAAAAGAAgAAAADAAAAAAAGAAkAAAADAAAAAAAGAAoAAAACAAEAAAAHAAoAAAACAAAAAAAIAAoAAAACAAAAAAAJAAoAAAACAAAAAAAKAAoAAAACAAAAAAALAAoAAAACAAAAAAAMAAoAAAACAAAAAAANAAoAAAACAAAAAAAOAAoAAAACAAAAAAAPAAkAAAAAAAAAAAAQAAkAAAACAAAAAAARAAkAAAACAAAAAAASAAkAAAACAAAAAAATAAkAAAACAAAAAAAUAAkAAAACAAAAAAAPAAoAAAABAAEAAAAVAAkAAAACAAAAAAAWAAkAAAABAAEAAAAWAAgAAAAAAAAAAAAXAAgAAAACAAAAAAAYAAgAAAACAAAAAAAZAAgAAAABAAEAAAAZAAcAAAADAAEAAAAZAAYAAAAFAAEAAAAZAAUAAAAFAAIAAAAaAAcAAAACAAAAAAAbAAcAAAACAAAAAAAcAAcAAAACAAAAAAAdAAcAAAACAAAAAAAeAAcAAAACAAAAAAAgAAcAAAACAAEAAAAfAAcAAAACAAAAAAAgAAYAAAAFAAIAAAAhAAcAAAACAAAAAAAiAAcAAAACAAAAAAAjAAcAAAACAAAAAAAkAAcAAAACAAAAAAAlAAcAAAABAAEAAAAlAAYAAAADAAAAAAAlAAUAAAABAAAAAAAkAAUAAAAEAAIAAAAYAAYAAAACAAAAAAAXAAYAAAACAAAAAAAWAAYAAAACAAAAAAAVAAYAAAAAAAEAAAAVAAUAAAABAAAAAAAQAAUAAAACAAAAAAAPAAUAAAAAAAEAAAAPAAQAAAABAAAAAAANAAQAAAACAAAAAAAMAAQAAAAAAAAAAAAMAAUAAAADAAAAAAAMAAYAAAABAAEAAAALAAYAAAACAAAAAAAKAAYAAAACAAAAAAAJAAYAAAACAAAAAAAIAAYAAAACAAAAAAAHAAYAAAACAAAAAAAFAAoAAAACAAAAAAAEAAoAAAACAAAAAAADAAoAAAACAAAAAAACAAoAAAACAAAAAAABAAoAAAACAAAAAAAAAAoAAAACAAAAAAD//woAAAACAAAAAAD9/woAAAACAAAAAAASAAUAAAACAAAAAAATAAUAAAACAAAAAAAUAAUAAAACAAAAAAARAAUAAAACAAAAAAD+/wkAAAADAAAAAAD+/wgAAAADAAAAAAD+/wcAAAADAAAAAAD+/wYAAAAFAAIAAAD+/woAAAACAAEAAAD8/woAAAAAAAAAAAD8/wsAAAADAAAAAAD8/wwAAAADAAAAAAD8/w0AAAADAAAAAAD8/w4AAAADAAAAAAD8/w8AAAADAAAAAAD8/xAAAAADAAAAAAD8/xEAAAADAAAAAAD8/xIAAAADAAAAAAD8/xMAAAADAAAAAAD8/xQAAAADAAAAAAD8/xUAAAADAAAAAAD8/xYAAAADAAAAAAD8/xcAAAADAAAAAAD8/xgAAAADAAIAAAAOAAQAAAACAAAAAAA=")
 tile_set = SubResource("TileSet_aq8tc")
 
 [node name="Player" parent="." unique_id=1373030580 instance=ExtResource("1_3dogw")]
@@ -187,7 +196,26 @@ shape = SubResource("RectangleShape2D_fggfr")
 position = Vector2(288, 128)
 texture = ExtResource("5_74g2k")
 
+[node name="Rice Wack Station" type="Node2D" parent="." unique_id=1247512312]
+y_sort_enabled = true
+position = Vector2(752, 182)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Rice Wack Station" unique_id=789917377]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rice Wack Station/StaticBody2D" unique_id=882347186]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_vbaai")
+
+[node name="Ricewhackingscenebirdseye" type="Sprite2D" parent="Rice Wack Station" unique_id=213893983]
+y_sort_enabled = true
+position = Vector2(4, -29)
+texture = ExtResource("13_vbaai")
+
+[node name="Chicken Coop" type="Node2D" parent="." unique_id=520356182]
+position = Vector2(752, 182)
+
 [node name="StoryStage3" type="Node2D" parent="." unique_id=648357357]
+visible = false
 y_sort_enabled = true
 position = Vector2(-200, -67)
 script = ExtResource("6_74g2k")
@@ -219,6 +247,37 @@ script = ExtResource("10_4h5dr")
 [node name="Sister" parent="StoryStage5" unique_id=377787694 instance=ExtResource("7_fggfr")]
 position = Vector2(815, 177)
 
+[node name="StoryStage6" type="Node2D" parent="." unique_id=2100861576]
+visible = false
+y_sort_enabled = true
+script = ExtResource("13_df2xb")
+
+[node name="Sister" parent="StoryStage6" unique_id=1988122593 instance=ExtResource("7_fggfr")]
+position = Vector2(715, 202)
+
+[node name="Check Button" parent="StoryStage6" unique_id=693920123 instance=ExtResource("9_42yyb")]
+offset_left = 703.0
+offset_top = 169.0
+offset_right = 727.0
+offset_bottom = 185.0
+text = "Talk"
+
+[node name="Area2D" type="Area2D" parent="StoryStage6/Check Button" unique_id=1356806676]
+z_index = 1
+position = Vector2(-703, -169)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StoryStage6/Check Button/Area2D" unique_id=2077832191]
+position = Vector2(724.5, 210)
+shape = SubResource("RectangleShape2D_df2xb")
+
+[node name="StoryStage8" type="Node2D" parent="." unique_id=1816824913]
+y_sort_enabled = true
+script = ExtResource("13_obaed")
+
+[node name="Sister" parent="StoryStage8" unique_id=1668537682 instance=ExtResource("7_fggfr")]
+position = Vector2(725, 200)
+
 [node name="DadNextToTheHouse" type="Node2D" parent="." unique_id=533531886]
 y_sort_enabled = true
 script = ExtResource("11_gdq4e")
@@ -243,5 +302,10 @@ collision_layer = 0
 position = Vector2(400, 129)
 shape = SubResource("RectangleShape2D_gdq4e")
 
+[node name="BarnMapTemp2" type="Sprite2D" parent="." unique_id=1914462869]
+position = Vector2(851, -1114)
+texture = ExtResource("1_r5l72")
+
 [connection signal="pressed" from="StoryStage3/Talk" to="StoryStage3" method="_on_talk_pressed"]
+[connection signal="button_down" from="StoryStage6/Check Button" to="StoryStage6" method="_on_check_button_button_down"]
 [connection signal="pressed" from="DadNextToTheHouse/Talk Button" to="DadNextToTheHouse" method="_on_talk_button_pressed"]

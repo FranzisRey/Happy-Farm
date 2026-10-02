@@ -21,11 +21,13 @@ func _process(delta):
 			talk_button.disabled = false
 			talk_button.visible = true
 		else:
+			
 			talk_button.disabled = true
 			talk_button.visible = false
 			pass
 			
 	else:
+		$Dad.process_mode = Node.PROCESS_MODE_DISABLED
 		talk_button.disabled = true
 		
 	if inDial && Input.is_action_just_pressed("LMB") && !GameManager.TextSlowShowing:

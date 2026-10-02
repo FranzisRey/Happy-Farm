@@ -4,6 +4,7 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	GameManager.PlayBlackAnim(1)
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	pass # Replace with function body.
 
 

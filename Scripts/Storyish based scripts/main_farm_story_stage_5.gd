@@ -6,7 +6,7 @@ var dialStage = -1
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if GameManager.StoryStage == 5:
-		GameManager
+		GameManager.saved_player_pos = Vector2(816, 144)
 		dialStage = 1
 		player.hatSprite.play("Right")
 		player.bodySprite.play("Right")

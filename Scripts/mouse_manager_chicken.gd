@@ -10,7 +10,7 @@ func _ready():
 func _process(delta):
 	global_position = get_global_mouse_position()
 	
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		for body in get_overlapping_bodies():
 			if body.is_in_group("Egg"):
 				var direction: Vector2 = global_position - body.global_position

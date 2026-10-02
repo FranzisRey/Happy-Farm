@@ -111,13 +111,15 @@ func _process(delta):
 		get_window().mode = Window.MODE_FULLSCREEN
 	
 	if TextSlowShowing && InCutscene && !get_tree().paused:
-		if $WhenComma.is_stopped():
+		if $WhenComma.is_stopped() && $WhenDot.is_stopped():
 			TextShowingTime += 1
 		if TextShowingTime >= TextShowSpeed:
 			label.visible_characters += 1
 			TextShowingTime = 0
 			if label.text[label.visible_characters-1] == ",":
 				$WhenComma.start()
+			elif label.text.substr(label.visible_characters-1, 2) == ". ":
+				$WhenDot.start()
 		if label.visible_ratio >= 1:
 			TextIsFinsihed.emit()
 			TextSlowShowing = false

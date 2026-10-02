@@ -2,21 +2,40 @@
 
 [ext_resource type="PackedScene" uid="uid://dqc7cco438bky" path="res://Scenes/chicken.tscn" id="1_15ly4"]
 [ext_resource type="Script" uid="uid://4gqx6pijjw2p" path="res://Scripts/cameraZoomResetter.gd" id="1_q1bry"]
+[ext_resource type="Texture2D" uid="uid://x85v4mp8tltj" path="res://Sprites/Chickencoupinterior.png" id="1_wom05"]
 [ext_resource type="Script" uid="uid://bsoylpxrs6u6i" path="res://Scripts/mouse_manager_chicken.gd" id="3_y7by7"]
+[ext_resource type="Texture2D" uid="uid://d4kh30xhtkhc2" path="res://Sprites/Green Day - Basket Case [Official Music Video] (4k Upgrade).png" id="5_qmbwk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_15ly4"]
 radius = 1.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qmbwk"]
+radius = 15.0
+height = 44.0
+
 [node name="Chicken_scene" type="Node2D" unique_id=1217332766 groups=["Cant Pause"]]
 
+[node name="Chickencoupinterior2" type="Sprite2D" parent="." unique_id=1139680701]
+modulate = Color(0, 0, 0, 1)
+z_index = -844
+scale = Vector2(3.1344616, 1.5609202)
+texture = ExtResource("1_wom05")
+
+[node name="Chickencoupinterior" type="Sprite2D" parent="." unique_id=1794108150]
+z_index = -2
+texture = ExtResource("1_wom05")
+
 [node name="Chicken_pen" parent="." unique_id=1909793426 instance=ExtResource("1_15ly4")]
-position = Vector2(-142, 0)
+position = Vector2(-48, 59)
 
-[node name="Chicken_pen2" parent="." unique_id=1702233184 instance=ExtResource("1_15ly4")]
-position = Vector2(-106, 0)
+[node name="Chicken_pen2" parent="." unique_id=1758555845 instance=ExtResource("1_15ly4")]
+position = Vector2(-35, 34)
 
-[node name="Chicken_pen3" parent="." unique_id=338155633 instance=ExtResource("1_15ly4")]
-position = Vector2(-70, 0)
+[node name="Chicken_pen3" parent="." unique_id=402094242 instance=ExtResource("1_15ly4")]
+position = Vector2(38, 34)
+
+[node name="Chicken_pen4" parent="." unique_id=563394829 instance=ExtResource("1_15ly4")]
+position = Vector2(50, 60)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1908298319]
 zoom = Vector2(4, 4)
@@ -33,3 +52,36 @@ script = ExtResource("3_y7by7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mouse" unique_id=1268172128]
 shape = SubResource("CircleShape2D_15ly4")
+
+[node name="Basket" type="Node2D" parent="." unique_id=823308617]
+position = Vector2(0, 4)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Basket" unique_id=488531115]
+z_index = 62
+collision_layer = 64
+collision_mask = 16
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Basket/StaticBody2D" unique_id=875042872]
+polygon = PackedVector2Array(-15, 44, -14, 49, -13, 52, -12, 53, -11, 55, -9, 56, -7, 57, -4, 58, 0, 59, 4, 58, 7, 57, 9, 56, 11, 55, 12, 53, 13, 52, 14, 49, 15, 44, 16, 50, 13, 56, 5, 60, -5, 60, -13, 56, -16, 50)
+
+[node name="GreenDayBasketCase[officialMusicVideo](4kUpgrade)2" type="Sprite2D" parent="Basket" unique_id=883941547]
+z_index = -2
+position = Vector2(0, 44)
+texture = ExtResource("5_qmbwk")
+vframes = 2
+frame = 1
+
+[node name="GreenDayBasketCase[officialMusicVideo](4kUpgrade)" type="Sprite2D" parent="Basket" unique_id=1550633355]
+z_index = 2
+position = Vector2(0, 44)
+texture = ExtResource("5_qmbwk")
+vframes = 2
+
+[node name="Area2D" type="Area2D" parent="Basket" unique_id=1849406508]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Basket/Area2D" unique_id=424165208]
+z_index = 50
+position = Vector2(0, 37)
+shape = SubResource("CapsuleShape2D_qmbwk")

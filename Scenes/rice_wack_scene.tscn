@@ -7,10 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://det5tddy3fqch" path="res://Sprites/Minigame stuff.png" id="4_5m4aa"]
 [ext_resource type="Texture2D" uid="uid://b1x4rdfe5w6va" path="res://Sprites/Grass and Path.png" id="4_f146u"]
 [ext_resource type="Texture2D" uid="uid://dupfgty0paehu" path="res://Sprites/Hand_grabbing.png" id="5_g7mud"]
+[ext_resource type="Texture2D" uid="uid://b7di4jp5gwlct" path="res://Sprites/Log.png" id="8_hf445"]
 [ext_resource type="Script" uid="uid://t701tco602om" path="res://Scripts/pausing_manager.gd" id="8_mrltv"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_qr0cd"]
-radius = 1.0
+[ext_resource type="Texture2D" uid="uid://dlmfka2aqp6f7" path="res://Sprites/Ricefieldgamebg.png" id="10_oxb8p"]
+[ext_resource type="Texture2D" uid="uid://bysi8ybxig33l" path="res://Sprites/tree.png" id="11_my18c"]
+[ext_resource type="Texture2D" uid="uid://lbjjq4fjc7um" path="res://Sprites/RiceCollectorcomplete.png" id="12_timy7"]
+[ext_resource type="Script" uid="uid://bakj6tswjb46c" path="res://Scripts/Storyish based scripts/rice_wack_story_stage_7.gd" id="13_wwmch"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qr0cd"]
 atlas = ExtResource("2_qr0cd")
@@ -49,7 +51,67 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5m4aa"]
-radius = 28.284271
+radius = 21.0
+
+[sub_resource type="Animation" id="Animation_mrltv"]
+resource_name = "Hand Go to Left"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mouse Manager/Sickle/HandGrabbing:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(300, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mouse Manager/Sickle/Rice getting whacked:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(300, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_hf445"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mouse Manager/Sickle/HandGrabbing:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mouse Manager/Sickle/Rice getting whacked:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oxb8p"]
+_data = {
+&"Hand Go to Left": SubResource("Animation_mrltv"),
+&"RESET": SubResource("Animation_hf445")
+}
 
 [node name="rice_wack_scene" type="Node2D" unique_id=70204520]
 script = ExtResource("1_tw3fl")
@@ -62,7 +124,7 @@ script = ExtResource("1_v7bin")
 [node name="Sickle" type="RigidBody2D" parent="Mouse Manager" unique_id=864830922]
 z_index = 1
 collision_layer = 256
-collision_mask = 512
+collision_mask = 640
 lock_rotation = true
 freeze = true
 freeze_mode = 1
@@ -80,17 +142,30 @@ polygon = PackedVector2Array(-1, 1, -36, -14, -43, -20, -23, -27, -6, -19, 1, -1
 [node name="1Big" type="CollisionPolygon2D" parent="Mouse Manager/Sickle" unique_id=455459424]
 polygon = PackedVector2Array(-1, 1, -32, -13, -30, -19, -17, -23, -6, -19, 1, -1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Mouse Manager/Sickle" unique_id=2094697422]
-shape = SubResource("CircleShape2D_qr0cd")
-
 [node name="Rice getting whacked" type="AnimatedSprite2D" parent="Mouse Manager/Sickle" unique_id=2015243147]
 position = Vector2(-39, -23)
 sprite_frames = SubResource("SpriteFrames_qr0cd")
 flip_h = true
 
 [node name="HandGrabbing" type="Sprite2D" parent="Mouse Manager/Sickle" unique_id=532278537]
-position = Vector2(1, 0)
 texture = ExtResource("5_g7mud")
+
+[node name="RiceWackParticle" type="CPUParticles2D" parent="Mouse Manager/Sickle" unique_id=713771150]
+position = Vector2(-22, -18)
+rotation = 0.5235988
+emitting = false
+amount = 32
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(30, 10)
+direction = Vector2(0, 0)
+spread = 180.0
+initial_velocity_max = 100.0
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+color = Color(0.9411765, 0.70980394, 0.25490198, 1)
 
 [node name="HitTimer" type="Timer" parent="Mouse Manager" unique_id=1768049743]
 wait_time = 0.5
@@ -100,21 +175,63 @@ one_shot = true
 zoom = Vector2(4, 4)
 script = ExtResource("2_scoo0")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=2003345257]
+[node name="Log" type="StaticBody2D" parent="." unique_id=2003345257]
 collision_layer = 512
 collision_mask = 256
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1036328655]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Log" unique_id=1036328655]
 position = Vector2(-96, 25)
 shape = SubResource("CircleShape2D_5m4aa")
 
-[node name="MinigameStuff" type="Sprite2D" parent="StaticBody2D" unique_id=1083497954]
+[node name="MinigameStuff" type="Sprite2D" parent="Log" unique_id=1083497954]
+visible = false
 position = Vector2(-96, 25)
 scale = Vector2(1.75, 1.75)
 texture = ExtResource("4_5m4aa")
 region_enabled = true
 region_rect = Rect2(32, 0, 32, 32)
 
+[node name="Log" type="Sprite2D" parent="Log" unique_id=538383347]
+position = Vector2(-96, 25)
+texture = ExtResource("8_hf445")
+
 [node name="Pausing Manager" type="Node2D" parent="." unique_id=2113312450]
 process_mode = 3
 script = ExtResource("8_mrltv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=441228708]
+libraries/ = SubResource("AnimationLibrary_oxb8p")
+
+[node name="Ricefieldgamebg" type="Sprite2D" parent="." unique_id=1883055840]
+z_index = -1
+position = Vector2(0, 180)
+texture = ExtResource("10_oxb8p")
+
+[node name="Tree" type="Sprite2D" parent="." unique_id=1375673051]
+position = Vector2(116, -7)
+texture = ExtResource("11_my18c")
+
+[node name="Tree Shadow" type="Sprite2D" parent="." unique_id=1480124437]
+modulate = Color(0.011764706, 0.011764706, 0.011764706, 1)
+self_modulate = Color(0, 0, 18.892157, 0.5647059)
+position = Vector2(142, 104.999985)
+rotation = 3.1415927
+skew = -0.41015238
+texture = ExtResource("11_my18c")
+
+[node name="RiceCollectr" type="Sprite2D" parent="." unique_id=251884950]
+position = Vector2(-48, 55)
+texture = ExtResource("12_timy7")
+hframes = 5
+
+[node name="RiceCollectr Shadow" type="Sprite2D" parent="." unique_id=565852634]
+modulate = Color(0.011764706, 0.011764706, 0.011764706, 1)
+self_modulate = Color(0, 8.961672, 18.892157, 0.5647059)
+position = Vector2(-59.999996, 93)
+rotation = 3.1415927
+skew = 0.6195919
+texture = ExtResource("12_timy7")
+hframes = 5
+
+[node name="StoryStage7" type="Node2D" parent="." unique_id=1968294050]
+script = ExtResource("13_wwmch")

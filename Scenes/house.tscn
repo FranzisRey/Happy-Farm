@@ -374,9 +374,9 @@ position = Vector2(112, -66)
 shape = SubResource("RectangleShape2D_j14gn")
 
 [node name="Sit Down" parent="StoryStage2" unique_id=882308414 instance=ExtResource("14_karln")]
-offset_left = 210.0
+offset_left = 209.0
 offset_top = -192.0
-offset_right = 244.0
+offset_right = 246.0
 offset_bottom = -176.0
 text = "Sit Down"
 alignment = 2

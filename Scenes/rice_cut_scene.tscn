@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://4gqx6pijjw2p" path="res://Scripts/cameraZoomResetter.gd" id="1_g5aql"]
 [ext_resource type="Script" uid="uid://c1xqk654m5bab" path="res://Scripts/rice_cut_manager.gd" id="1_k22yq"]
+[ext_resource type="FontFile" uid="uid://y86yk32lo6wy" path="res://Fonts and Stuff/TINY5-REGULAR.TTF" id="2_j0yb4"]
 [ext_resource type="Texture2D" uid="uid://dlmfka2aqp6f7" path="res://Sprites/Ricefieldgamebg.png" id="3_7e167"]
 [ext_resource type="PackedScene" uid="uid://bcb0g85qgqnnb" path="res://Scenes/Rice crop.tscn" id="3_euuvj"]
 [ext_resource type="Shader" uid="uid://ci67624t2bk73" path="res://Shaders/Water Wave.gdshader" id="4_3t7vw"]
@@ -252,8 +253,10 @@ visible = false
 layout_mode = 0
 offset_left = 6.0
 offset_top = 3.0
-offset_right = 51.0
-offset_bottom = 26.0
+offset_right = 40.0
+offset_bottom = 28.0
+theme_override_fonts/font = ExtResource("2_j0yb4")
+theme_override_font_sizes/font_size = 16
 text = "00:00"
 
 [node name="RankShowing" type="Control" parent="CanvasLayer" unique_id=1922393087]

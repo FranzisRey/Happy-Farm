@@ -4,7 +4,7 @@ var eggNode
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	eggNode = preload("res://Scenes/egg.tscn")
-	var randCount = randi_range(0,3)
+	var randCount = randi_range(2,3)
 	var i = 1
 	while(i <= randCount && randCount != 0):
 		var eggIn = eggNode.instantiate()
