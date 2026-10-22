@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bcttydlcq41o5" path="res://Sprites/Door.png" id="7_7ug6d"]
 [ext_resource type="Texture2D" uid="uid://njg48lq3n5i3" path="res://Sprites/Bed.png" id="7_l3jqw"]
 [ext_resource type="Texture2D" uid="uid://ggg305j8e6g1" path="res://Sprites/Window.png" id="8_gau5j"]
+[ext_resource type="Texture2D" uid="uid://ulgosoldvmtq" path="res://Sprites/KitchenItems.png" id="10_j14gn"]
 [ext_resource type="Texture2D" uid="uid://x4kjbrtt41jl" path="res://Sprites/TableAndChair.png" id="10_lmwq5"]
 [ext_resource type="Script" uid="uid://crvdnbedyidml" path="res://Scripts/Storyish based scripts/house_story_stage_2.gd" id="11_0h1dt"]
 [ext_resource type="PackedScene" uid="uid://ds441bysyypk" path="res://Scenes/sister.tscn" id="11_x4svt"]
@@ -184,6 +185,26 @@ _data = {
 &"To_Player": SubResource("Animation_7ug6d")
 }
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_karln"]
+texture = ExtResource("3_bu6dc")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_j14gn"]
+sources/0 = SubResource("TileSetAtlasSource_karln")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gslo5"]
+size = Vector2(32, 20)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0h1dt"]
 size = Vector2(32, 16)
 
@@ -199,6 +220,9 @@ size = Vector2(32, 2)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tj63m"]
 size = Vector2(20, 1)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a7v5j"]
+size = Vector2(30, 91)
+
 [node name="House" type="Node2D" unique_id=1048913792]
 y_sort_enabled = true
 script = ExtResource("1_iqtyj")
@@ -212,7 +236,7 @@ navigation_enabled = false
 navigation_visibility_mode = 1
 
 [node name="Hitbox" type="TileMapLayer" parent="." unique_id=674405153]
-tile_map_data = PackedByteArray("AAD9//P/AAACAAIAAAD+//P/AAACAAIAAAD///P/AAACAAIAAAAAAPP/AAACAAIAAAABAPP/AAACAAIAAAACAPP/AAACAAIAAAADAPP/AAACAAIAAAAEAPP/AAACAAIAAAAFAPP/AAACAAIAAAAGAPP/AAACAAIAAAAHAPP/AAACAAIAAAAIAPP/AAACAAIAAAAJAPP/AAACAAIAAAAOAPP/AAACAAIAAAAPAPP/AAACAAIAAAAQAPP/AAACAAIAAAARAPP/AAACAAIAAAASAPP/AAACAAIAAAATAPP/AAACAAIAAAAUAPP/AAACAAIAAAAVAPP/AAACAAIAAAARANz/AAACAAIAAAARAN3/AAACAAIAAAARAN7/AAACAAIAAAARAN//AAACAAIAAAARAOD/AAACAAIAAAASAOH/AAACAAIAAAATAOH/AAACAAIAAAAUAOH/AAACAAIAAAAVAOH/AAACAAIAAAAYAOH/AAACAAIAAAAZAOH/AAACAAIAAAAaAOH/AAACAAIAAAAbAOH/AAACAAIAAAAcANz/AAACAAIAAAAcAN3/AAACAAIAAAAcAN7/AAACAAIAAAAcAN//AAACAAIAAAAcAOD/AAACAAIAAAASANv/AAACAAIAAAATANv/AAACAAIAAAAUANv/AAACAAIAAAAVANv/AAACAAIAAAAWANv/AAACAAIAAAAXANv/AAACAAIAAAAYANv/AAACAAIAAAAZANv/AAACAAIAAAAaANv/AAACAAIAAAAbANv/AAACAAIAAAAKAPP/AAACAAIAAAALAPP/AAACAAIAAAAWAPT/AAACAAIAAAAWAPX/AAACAAIAAAAWAPb/AAACAAIAAAAWAPf/AAACAAIAAAAWAPj/AAACAAIAAAAWAPn/AAACAAIAAAAWAPr/AAACAAIAAAAVAPv/AAACAAIAAAAUAPv/AAACAAIAAAATAPv/AAACAAIAAAASAPv/AAACAAIAAAARAPv/AAACAAIAAAAQAPv/AAACAAIAAAAPAPv/AAACAAIAAAAOAPv/AAACAAIAAAAHAPv/AAACAAIAAAAIAPv/AAACAAIAAAAJAPv/AAACAAIAAAAKAPv/AAACAAIAAAALAPv/AAACAAIAAAAMAPv/AAACAAIAAAANAPv/AAACAAIAAAAEAPv/AAACAAIAAAADAPv/AAACAAIAAAACAPv/AAACAAIAAAABAPv/AAACAAIAAAAAAPv/AAACAAIAAAD///v/AAACAAIAAAD+//v/AAACAAIAAAD9//v/AAACAAIAAAD8//r/AAACAAIAAAD8//n/AAACAAIAAAD8//j/AAACAAIAAAD8//f/AAACAAIAAAD8//b/AAACAAIAAAD8//X/AAACAAIAAAD8//T/AAACAAIAAAA=")
+tile_map_data = PackedByteArray("AAD9//P/AAACAAIAAAD+//P/AAACAAIAAAD///P/AAACAAIAAAAAAPP/AAACAAIAAAABAPP/AAACAAIAAAACAPP/AAACAAIAAAADAPP/AAACAAIAAAAEAPP/AAACAAIAAAAFAPP/AAACAAIAAAAGAPP/AAACAAIAAAAHAPP/AAACAAIAAAAIAPP/AAACAAIAAAAJAPP/AAACAAIAAAAOAPP/AAACAAIAAAAPAPP/AAACAAIAAAAQAPP/AAACAAIAAAARAPP/AAACAAIAAAAUAPP/AAACAAIAAAAVAPP/AAACAAIAAAARANz/AAACAAIAAAARAN3/AAACAAIAAAARAN7/AAACAAIAAAARAN//AAACAAIAAAARAOD/AAACAAIAAAASAOH/AAACAAIAAAATAOH/AAACAAIAAAAUAOH/AAACAAIAAAAVAOH/AAACAAIAAAAYAOH/AAACAAIAAAAZAOH/AAACAAIAAAAaAOH/AAACAAIAAAAbAOH/AAACAAIAAAAcANz/AAACAAIAAAAcAN3/AAACAAIAAAAcAN7/AAACAAIAAAAcAN//AAACAAIAAAAcAOD/AAACAAIAAAASANv/AAACAAIAAAATANv/AAACAAIAAAAUANv/AAACAAIAAAAVANv/AAACAAIAAAAWANv/AAACAAIAAAAXANv/AAACAAIAAAAYANv/AAACAAIAAAAZANv/AAACAAIAAAAaANv/AAACAAIAAAAbANv/AAACAAIAAAAKAPP/AAACAAIAAAALAPP/AAACAAIAAAAWAPT/AAACAAIAAAAWAPX/AAACAAIAAAAWAPb/AAACAAIAAAAWAPf/AAACAAIAAAAWAPj/AAACAAIAAAAWAPn/AAACAAIAAAAWAPr/AAACAAIAAAAVAPv/AAACAAIAAAAUAPv/AAACAAIAAAATAPv/AAACAAIAAAASAPv/AAACAAIAAAARAPv/AAACAAIAAAAQAPv/AAACAAIAAAAPAPv/AAACAAIAAAAOAPv/AAACAAIAAAAHAPv/AAACAAIAAAAIAPv/AAACAAIAAAAJAPv/AAACAAIAAAAKAPv/AAACAAIAAAALAPv/AAACAAIAAAAMAPv/AAACAAIAAAANAPv/AAACAAIAAAAEAPv/AAACAAIAAAADAPv/AAACAAIAAAACAPv/AAACAAIAAAABAPv/AAACAAIAAAAAAPv/AAACAAIAAAD///v/AAACAAIAAAD+//v/AAACAAIAAAD9//v/AAACAAIAAAD8//r/AAACAAIAAAD8//n/AAACAAIAAAD8//j/AAACAAIAAAD8//f/AAACAAIAAAD8//b/AAACAAIAAAD8//X/AAACAAIAAAD8//T/AAACAAIAAAA=")
 tile_set = SubResource("TileSet_7ug6d")
 
 [node name="Players Room" type="Node2D" parent="." unique_id=1510335721]
@@ -294,6 +318,42 @@ shape = SubResource("RectangleShape2D_ttg8n")
 
 [node name="Room Trans" type="AnimationPlayer" parent="Player Door" unique_id=404774558]
 libraries/ = SubResource("AnimationLibrary_lmwq5")
+
+[node name="Bathroom" type="Node2D" parent="." unique_id=109995465]
+z_index = -1
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Bathroom" unique_id=2005016445]
+tile_map_data = PackedByteArray("AAAoAO3/AAABAAEAAAAoAO7/AAAAAAEAAAAoAO//AAABAAEAAAApAO3/AAAAAAEAAAApAO7/AAABAAEAAAApAO//AAAAAAEAAAAqAO3/AAABAAEAAAAqAO7/AAAAAAEAAAAqAO//AAABAAEAAAArAO3/AAAAAAEAAAArAO7/AAABAAEAAAArAO//AAAAAAEAAAAoAPD/AAACAAAAAAAoAPH/AAACAAAAAAAoAPL/AAACAAAAAAAoAPP/AAACAAAAAAAoAPT/AAACAAAAAAApAPD/AAACAAAAAAApAPH/AAACAAAAAAApAPL/AAACAAAAAAApAPP/AAACAAAAAAApAPT/AAACAAAAAAAqAPD/AAACAAAAAAAqAPH/AAACAAAAAAAqAPL/AAACAAAAAAAqAPP/AAACAAAAAAAqAPT/AAACAAAAAAArAPD/AAACAAAAAAArAPH/AAACAAAAAAArAPL/AAACAAAAAAArAPP/AAACAAAAAAArAPT/AAACAAAAAAApAPX/AAACAAAAAAAqAPX/AAACAAAAAAAmAPD/AAACAAAAAAAmAPH/AAACAAAAAAAmAPL/AAACAAAAAAAmAPP/AAACAAAAAAAmAPT/AAACAAAAAAAnAPD/AAACAAAAAAAnAPH/AAACAAAAAAAnAPL/AAACAAAAAAAnAPP/AAACAAAAAAAnAPT/AAACAAAAAAAsAPD/AAACAAAAAAAsAPH/AAACAAAAAAAsAPL/AAACAAAAAAAsAPP/AAACAAAAAAAsAPT/AAACAAAAAAAtAPD/AAACAAAAAAAtAPH/AAACAAAAAAAtAPL/AAACAAAAAAAtAPP/AAACAAAAAAAtAPT/AAACAAAAAAAnAO//AAAAAAEAAAAmAO7/AAAAAAEAAAAnAO3/AAAAAAEAAAAsAO7/AAAAAAEAAAAtAO3/AAAAAAEAAAAtAO//AAAAAAEAAAAnAO7/AAABAAEAAAAmAO//AAABAAEAAAAmAO3/AAABAAEAAAAsAO//AAABAAEAAAAsAO3/AAABAAEAAAAtAO7/AAABAAEAAAA=")
+tile_set = SubResource("TileSet_j14gn")
+
+[node name="Bathroom Door" type="Sprite2D" parent="Bathroom" unique_id=1233900579]
+position = Vector2(304, -208)
+texture = ExtResource("7_7ug6d")
+
+[node name="Camera2D" type="Camera2D" parent="Bathroom" unique_id=980650869]
+position = Vector2(672, -232)
+zoom = Vector2(4, 4)
+script = ExtResource("2_iqtyj")
+
+[node name="Bathroom Door" type="Node2D" parent="." unique_id=756291759]
+z_index = -1
+
+[node name="Bathroom Door 1" type="Area2D" parent="Bathroom Door" unique_id=2014228176]
+collision_layer = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bathroom Door/Bathroom Door 1" unique_id=278730117]
+position = Vector2(304, -204)
+shape = SubResource("RectangleShape2D_gslo5")
+
+[node name="Bathroom Door 2" type="Area2D" parent="Bathroom Door" unique_id=1951136549]
+position = Vector2(368, 54)
+collision_layer = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bathroom Door/Bathroom Door 2" unique_id=2054766675]
+position = Vector2(304, -204)
+shape = SubResource("RectangleShape2D_gslo5")
+
+[node name="Bathroom Trans" type="AnimationPlayer" parent="Bathroom Door" unique_id=1249695899]
 
 [node name="Main Door" type="Node2D" parent="." unique_id=1765115298]
 
@@ -394,5 +454,18 @@ position = Vector2(208, -121)
 enabled = false
 zoom = Vector2(4, 4)
 script = ExtResource("2_iqtyj")
+
+[node name="Kitchen" type="Node2D" parent="." unique_id=357255835]
+position = Vector2(312, -144)
+
+[node name="KitchenItems" type="Sprite2D" parent="Kitchen" unique_id=413688423]
+texture = ExtResource("10_j14gn")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Kitchen" unique_id=1262300174]
+collision_layer = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Kitchen/StaticBody2D" unique_id=260294352]
+position = Vector2(25, 5.5)
+shape = SubResource("RectangleShape2D_a7v5j")
 
 [connection signal="button_down" from="StoryStage2/Sit Down" to="StoryStage2" method="_on_sit_down_button_down"]

@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://cq5qtstngfy7s"]
+
+[ext_resource type="Script" uid="uid://c42amdqw4qhkm" path="res://Scripts/chicken_feed.gd" id="1_07t0a"]
+[ext_resource type="Script" uid="uid://4gqx6pijjw2p" path="res://Scripts/cameraZoomResetter.gd" id="1_7078l"]
+[ext_resource type="Texture2D" uid="uid://plbbqk6y51l2" path="res://Sprites/Chickenfeeder.png" id="2_07t0a"]
+
+[sub_resource type="Animation" id="Animation_4qwie"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Black:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4a35t"]
+resource_name = "To_Black"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Black:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1fbyx"]
+resource_name = "To_Clear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Black:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w347k"]
+_data = {
+&"RESET": SubResource("Animation_4qwie"),
+&"To_Black": SubResource("Animation_4a35t"),
+&"To_Clear": SubResource("Animation_1fbyx")
+}
+
+[node name="Node2D" type="Node2D" unique_id=441302687]
+script = ExtResource("1_07t0a")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1149327540]
+zoom = Vector2(4, 4)
+script = ExtResource("1_7078l")
+
+[node name="Chickenfeeder" type="Sprite2D" parent="." unique_id=1135245262]
+texture = ExtResource("2_07t0a")
+
+[node name="Black" type="Polygon2D" parent="." unique_id=1939835364]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-277, -176, 301, -166, 334, 304, -353, 219)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Black" unique_id=639511879]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_w347k")
+speed_scale = 0.5

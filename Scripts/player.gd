@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 3000.0
+const SPEED = 5000.0
 var animationFrame = 0
 var dia = 1
 
@@ -50,8 +50,9 @@ func _physics_process(delta):
 			velocity.y = 0
 	else:
 		velocity = Vector2.ZERO
-	velocity.normalized()
-	# Manage the animation
+	
+	velocity = velocity.normalized()*SPEED*delta
+	
 	if isMoving:
 		animationFrame = (animationFrame + 1) % 4
 		if xDir == 1 && !yDir:
@@ -77,12 +78,13 @@ func _physics_process(delta):
 		armSprite.stop()
 		hatSprite.stop()
 		animationFrame = 0
-	
-	global_position.x = round(global_position.x)
-	global_position.y = round(global_position.y)
+	if velocity == Vector2(0,0):
+		global_position.x = round(global_position.x)
+		global_position.y = round(global_position.y)
 	#$Camera.global_position.x = roundi($Camera.global_position.x)
 	#$Camera.global_position.y = roundi($Camera.global_position.y)
 	#$Camera.global_position.x = round(global_position.x)
 	#$Camera.global_position.y = round(global_position.y)
+	print(get_real_velocity())
 	move_and_slide()
 	

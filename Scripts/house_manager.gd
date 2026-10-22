@@ -8,6 +8,9 @@ extends Node2D
 @onready var room_trans = $"Player Door/Room Trans"
 @onready var player = $Player
 
+@onready var bathroom_room_cam = $Bathroom/Camera2D
+@onready var bathroom_door_1 = $"Bathroom Door/Bathroom Door 1"
+@onready var bathroom_door_2 = $"Bathroom Door/Bathroom Door 2"
 @onready var exit = $"Main Door/Exit"
 var dialWait = true
 
@@ -70,29 +73,34 @@ func _process(delta):
 	
 	
 	if HousePart == 0:
-		$Player/Camera.enabled = true
+		player.enabledLol = true
 		player_room_cam.enabled = false
+		bathroom_room_cam.enabled = false
 	else:
-		$Player/Camera.enabled = false
+		player.enabledLol = false
 		if HousePart == 1:
 			player_room_cam.enabled = true
 		
 	
-	
+	#Players Room
 	if player_door_1.get_overlapping_bodies().size() >= 1:
 		GameManager.PlayBlackAnim(0)
 		room_trans.play("To_Player")
-		await get_tree().create_timer(0.15).timeout
+		await get_tree().create_timer(0.15, false).timeout
 		GameManager.PlayBlackAnim(1)
 	if player_door_2.get_overlapping_bodies().size() >= 1:
 		$Player/Camera.position_smoothing_enabled = false
 		room_trans.play("From_Player")
 		GameManager.PlayBlackAnim(0)
-		await get_tree().create_timer(0.10).timeout
+		await get_tree().create_timer(0.10, false).timeout
 		GameManager.PlayBlackAnim(1)
-		await get_tree().create_timer(0.05).timeout
+		await get_tree().create_timer(0.05, false).timeout
 		$Player/Camera.position_smoothing_enabled = true
-	
+	#Bathroom
+	if bathroom_door_1.get_overlapping_bodies().size() >= 1:
+		player.position = Vector2(672, -180)
+	if  bathroom_door_2.get_overlapping_bodies().size() >= 1:
+		player.position = Vector2(304, -190)
 	
 	
 	if exit.get_overlapping_bodies().size() >= 1:

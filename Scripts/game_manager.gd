@@ -201,3 +201,9 @@ func SetDialog(text:String = "", ifVisible:bool = false, type:int = 0, pfp:Strin
 	icon.texture = load(pfp)
 	dialog_box.visible = ifVisible
 	return false
+	
+func ResetScene():
+	PlayBlackAnim(0)
+	await get_tree().create_timer(.20, false).timeout
+	get_tree().reload_current_scene()
+	PlayBlackAnim(1)

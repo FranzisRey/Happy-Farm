@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://mxe3pcoeag5l"]
+
+[ext_resource type="Texture2D" uid="uid://dwivl4snr3wnc" path="res://Sprites/banana_reduced.png" id="1_3gmt6"]
+[ext_resource type="Script" uid="uid://dxbhqjnxj0ddv" path="res://Scripts/banana.gd" id="1_bkbm4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dsex1"]
+radius = 12.0
+
+[node name="Banana" type="RigidBody2D" unique_id=642042168 groups=["Banana"]]
+rotation = -0.7853982
+collision_layer = 1024
+collision_mask = 64
+script = ExtResource("1_bkbm4")
+
+[node name="BananaReduced" type="Sprite2D" parent="." unique_id=1160929850]
+position = Vector2(-12, 12)
+texture = ExtResource("1_3gmt6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1662666950]
+position = Vector2(-12, 12)
+shape = SubResource("CircleShape2D_dsex1")

@@ -10,6 +10,8 @@ func _ready():
 func _on_body_entered(body):
 	print(lastVelocity.length())
 	if lastVelocity.length() >= 200:
+		$CollisionShape.queue_free()
+		remove_from_group("Egg")
 		$Egg.visible = false
 		freeze = true
 		$CollisionShape.disabled = true

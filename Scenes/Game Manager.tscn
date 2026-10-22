@@ -64,17 +64,19 @@ script = ExtResource("1_1qqqt")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=384994853]
 
-[node name="Black" type="Polygon2D" parent="CanvasLayer" unique_id=340965373]
-position = Vector2(20, 0)
-color = Color(0, 0, 0, 0)
-polygon = PackedVector2Array(-780, -667, 2000, -658, 1798, 1520, -1185, 1419)
-
 [node name="BlackAnim" type="AnimationPlayer" parent="CanvasLayer" unique_id=1164434273]
 process_mode = 1
 libraries/ = SubResource("AnimationLibrary_qdbl6")
 
+[node name="Black" type="Polygon2D" parent="CanvasLayer" unique_id=340965373]
+z_index = 100
+position = Vector2(20, 0)
+color = Color(0, 0, 0, 0)
+polygon = PackedVector2Array(-780, -667, 2000, -658, 1798, 1520, -1185, 1419)
+
 [node name="DialogBox" type="Control" parent="CanvasLayer" unique_id=278453761]
 visible = false
+z_index = 200
 layout_mode = 3
 anchors_preset = 0
 offset_right = 320.0
@@ -130,6 +132,7 @@ polygon = PackedVector2Array(2, 134, 47, 134, 47, 178, 2, 178)
 
 [node name="PauseThing" type="Label" parent="CanvasLayer" unique_id=1792875111]
 visible = false
+z_index = 300
 offset_right = 40.0
 offset_bottom = 23.0
 text = "Pause"

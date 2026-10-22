@@ -1,10 +1,13 @@
 [gd_scene format=3 uid="uid://b3ippm3ajog2d"]
 
 [ext_resource type="PackedScene" uid="uid://dqc7cco438bky" path="res://Scenes/chicken.tscn" id="1_15ly4"]
+[ext_resource type="Script" uid="uid://dhk8i26e1io53" path="res://Scripts/chicken_scene_manager.gd" id="1_gu056"]
 [ext_resource type="Script" uid="uid://4gqx6pijjw2p" path="res://Scripts/cameraZoomResetter.gd" id="1_q1bry"]
 [ext_resource type="Texture2D" uid="uid://x85v4mp8tltj" path="res://Sprites/Chickencoupinterior.png" id="1_wom05"]
 [ext_resource type="Script" uid="uid://bsoylpxrs6u6i" path="res://Scripts/mouse_manager_chicken.gd" id="3_y7by7"]
 [ext_resource type="Texture2D" uid="uid://d4kh30xhtkhc2" path="res://Sprites/Green Day - Basket Case [Official Music Video] (4k Upgrade).png" id="5_qmbwk"]
+[ext_resource type="PackedScene" uid="uid://cxajr2y8ftopq" path="res://Scenes/check_button.tscn" id="7_2e3q7"]
+[ext_resource type="Script" uid="uid://b6be1ucemdi60" path="res://Scripts/egg_remove.gd" id="8_stt8d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_15ly4"]
 radius = 1.0
@@ -13,7 +16,11 @@ radius = 1.0
 radius = 15.0
 height = 44.0
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_2e3q7"]
+distance = -129.0
+
 [node name="Chicken_scene" type="Node2D" unique_id=1217332766 groups=["Cant Pause"]]
+script = ExtResource("1_gu056")
 
 [node name="Chickencoupinterior2" type="Sprite2D" parent="." unique_id=1139680701]
 modulate = Color(0, 0, 0, 1)
@@ -29,10 +36,10 @@ texture = ExtResource("1_wom05")
 position = Vector2(-48, 59)
 
 [node name="Chicken_pen2" parent="." unique_id=1758555845 instance=ExtResource("1_15ly4")]
-position = Vector2(-35, 34)
+position = Vector2(-31, 18)
 
 [node name="Chicken_pen3" parent="." unique_id=402094242 instance=ExtResource("1_15ly4")]
-position = Vector2(38, 34)
+position = Vector2(28, 18)
 
 [node name="Chicken_pen4" parent="." unique_id=563394829 instance=ExtResource("1_15ly4")]
 position = Vector2(50, 60)
@@ -85,3 +92,29 @@ collision_mask = 16
 z_index = 50
 position = Vector2(0, 37)
 shape = SubResource("CapsuleShape2D_qmbwk")
+
+[node name="Done Button" parent="." unique_id=882308414 instance=ExtResource("7_2e3q7")]
+offset_left = 98.0
+offset_top = 60.0
+offset_right = 130.0
+offset_bottom = 76.0
+text = "Done"
+
+[node name="Restart Button" parent="." unique_id=1789357200 instance=ExtResource("7_2e3q7")]
+offset_left = 98.0
+offset_top = 35.0
+offset_right = 130.0
+offset_bottom = 51.0
+text = "Restart"
+
+[node name="Egg Remove" type="Area2D" parent="." unique_id=1863251009]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("8_stt8d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Egg Remove" unique_id=355071579]
+shape = SubResource("WorldBoundaryShape2D_2e3q7")
+
+[connection signal="pressed" from="Done Button" to="." method="_on_done_button_pressed"]
+[connection signal="pressed" from="Restart Button" to="." method="_on_restart_button_pressed"]
+[connection signal="body_entered" from="Egg Remove" to="Egg Remove" method="_on_body_entered"]

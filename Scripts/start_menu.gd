@@ -34,4 +34,24 @@ func _on_button_button_down():
 		GameManager.PlayBlackAnim(0)
 		await get_tree().create_timer(.75).timeout
 		GameManager.ChangeSceneNormal("res://Scenes/rice_wack_scene.tscn")
+	elif  GameManager.StoryStage == 8:
+		GameManager.PlayBlackAnim(0)
+		await get_tree().create_timer(.75).timeout
+		GameManager.ChangeSceneNormal("res://Scenes/main_farm.tscn")
+	elif  GameManager.StoryStage == 9:
+		GameManager.PlayBlackAnim(0)
+		await get_tree().create_timer(.75).timeout
+		GameManager.ChangeSceneNormal("res://Scenes/main_farm.tscn")
+	elif  GameManager.StoryStage == 10:
+		GameManager.PlayBlackAnim(0)
+		await get_tree().create_timer(.75).timeout
+		GameManager.ChangeSceneNormal("res://Scenes/chicken_scene.tscn")
+	elif  GameManager.StoryStage == 11:
+		GameManager.PlayBlackAnim(0)
+		await get_tree().create_timer(.75).timeout
+		GameManager.ChangeSceneNormal("res://Scenes/Chicken feed.tscn")
+	elif  GameManager.StoryStage == 12:
+		GameManager.PlayBlackAnim(0)
+		await get_tree().create_timer(.75).timeout
+		GameManager.ChangeSceneNormal("res://Scenes/main_farm.tscn")
 	pass # Replace with function body.

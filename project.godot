@@ -35,6 +35,7 @@ Egg="The group egg"
 Mango="Mango"
 "Rice crop"="Rice crop"
 "Cant Pause"="This Scene Can't be paused"
+Banana=""
 
 [input]
 
@@ -91,6 +92,7 @@ ESC={
 2d_physics/layer_8="Walls for player"
 2d_physics/layer_9="Rice"
 2d_physics/layer_10="Log"
+2d_physics/layer_11="Banana"
 
 [physics]
 
